@@ -24,6 +24,9 @@ gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
 
+# Use Active Model has_secure_password
+gem 'bcrypt', '~> 3.1.12'
+
 # Use to run React and Rails server with one command
 gem 'foreman', '~> 0.87.2'
 
