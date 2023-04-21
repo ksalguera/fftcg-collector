@@ -17,7 +17,7 @@ const MenuNavMobile = ({ onHandleCloseNavMenu }) => {
               '&:visited': { color: 'inherit' }
             }}
           >
-          {page.name}
+            {page.name}
           </Typography>
         </MenuItem>
       ))}

@@ -17,7 +17,6 @@ import AppLogoNav from './AppLogoNav';
 import MenuNavMobile from './MenuNavMobile';
 import MenuNav from './MenuNav';
 
-const pages = ['Admin Dashboard', 'Collection', 'Sets', 'Cards', 'Resources'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = () => {
@@ -39,13 +38,16 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/* Add App Logo */}
-          <AppLogoNav />
+  // layout: Logo > Menu > Settings
+  // mobile layout: Hamburger Menu > Logo > Settings
 
+  return (
+    <AppBar position='static' elevation={0}>
+      <Container maxWidth='xl'>
+        <Toolbar disableGutters>
+          {/* Logo */}
+          <AppLogoNav />
+          {/* Mobile Hamburger Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -57,7 +59,6 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            {/* Menu Settings Mobile */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -79,7 +80,7 @@ const NavBar = () => {
               <MenuNavMobile onHandleCloseNavMenu={handleCloseNavMenu}/>
             </Menu>
           </Box>
-          {/* Mobile Menu Settings */}
+          {/* Mobile Logo */}
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -99,24 +100,13 @@ const NavBar = () => {
           >
             LOGO
           </Typography>
-          {/* Menu Settings */}
-          <MenuNav onHandleCloseNavMenu={handleCloseNavMenu} />
-          {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box> */}
-
+          {/* Menu */}
+          <MenuNav />
+          {/* Settings */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Aemy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
