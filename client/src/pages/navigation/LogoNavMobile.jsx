@@ -1,7 +1,7 @@
 import { NavLink as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 
-const AppLogoNav = () => {
+const LogoNavMobile = () => {
   return (
     <>
       {/* Add Logo Here */}
@@ -12,7 +12,8 @@ const AppLogoNav = () => {
         to='/'
         sx={{
           mr: 2,
-          display: { xs: 'none', md: 'flex' },
+          display: { xs: 'flex', md: 'none' },
+          flexGrow: 1,
           fontFamily: 'sans-serif',
           fontWeight: 700,
           letterSpacing: '.3rem',
@@ -20,11 +21,10 @@ const AppLogoNav = () => {
           textDecoration: 'none',
         }}
       >
-        FFTCG Collector
+        FFTCG COLLECTOR
       </Typography>
     </>
-
   )
 }
 
-export default AppLogoNav;
+export default LogoNavMobile;
