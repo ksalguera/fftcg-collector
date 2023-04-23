@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
+import { UserContext } from '../../contexts/UserContext';
 
 const SignUpForm = () => {
   const initialState = { 
@@ -9,7 +10,7 @@ const SignUpForm = () => {
     password_confirmation: '',
     profile_attributes: { display_name: '' }
    }
-
+  const { setUser } = useContext(UserContext);
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
@@ -21,12 +22,6 @@ const SignUpForm = () => {
       setFormData({...formData, [e.target.name]: e.target.value});
     }
   }
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   console.log(formData);
-  //   setFormData(initialState);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +42,6 @@ const SignUpForm = () => {
       console.error(error);
     }
   }
-  
   
   return (
     <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
