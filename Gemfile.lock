@@ -186,7 +186,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.13)
   activestorage (~> 7.0, >= 7.0.4.3)
-  aws-sdk-s3 (~> 1.121)
+  aws-sdk-s3
   bcrypt (~> 3.1.12)
   debug
   foreman (~> 0.87.2)

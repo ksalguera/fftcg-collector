@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'activestorage', '~> 7.0', '>= 7.0.4.3'
 
 # Use amazon aws for active storage
-gem "aws-sdk-s3", "~> 1.121"
+gem "aws-sdk-s3", require: false
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
