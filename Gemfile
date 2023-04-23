@@ -9,6 +9,9 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 # Use active storage
 gem 'activestorage', '~> 7.0', '>= 7.0.4.3'
 
+# Use amazon aws for active storage
+gem "aws-sdk-s3", "~> 1.121"
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -39,4 +42,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
