@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_admin
   skip_before_action :authorize_user, only: [:create]
   
-  # GET /users/:id
+  # GET /users/:id || GET /account
   def show
     render json: @current_user
   end
