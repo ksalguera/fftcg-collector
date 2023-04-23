@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
+import { Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
 
 const LoginForm = () => {
   const initialState = { email: '', password: '' };
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(null);
+  const navigate = useNavigate();
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
@@ -16,7 +18,7 @@ const LoginForm = () => {
 
   return (
     <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-      <Typography variant='h2' mb={2}>Login To Your Account</Typography>
+      <Typography variant='h2' mb={2}>Login to Your Account</Typography>
       <FormControl fullWidth sx={{ mb: 2 }}>
         <Typography variant='subtitle1' mb={1}>Email Address</Typography>
         <TextField
@@ -42,9 +44,10 @@ const LoginForm = () => {
       <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
         Login
       </Button>
-      <Button variant='outlined' color='primary' sx={{ ml: 1, mt: 2, width: '25%' }}>
+      <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
         Cancel
       </Button>
+      <Typography mt={2}>Need an account? <Link href='/signup'>SIGN UP</Link></Typography> 
     </Box>
   );
 };

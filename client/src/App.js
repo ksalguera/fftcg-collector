@@ -9,6 +9,7 @@ import CollectionDashboard from './pages/collection/CollectionDashboard';
 import CardList from './pages/cards/CardList';
 import Home from './pages/home/Home';
 import LoginForm from './pages/profile/LoginForm';
+import SignUpForm from './pages/profile/SignUpForm';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/collection-dashboard' element={<CollectionDashboard />} />
             <Route path='/browse-cards' element={<CardList />} />
             <Route path='/login' element={<LoginForm />} />
+            <Route path='/signup' element={<SignUpForm />} />
           </Routes>
         </Box>
       </ThemeProvider>

@@ -7,6 +7,7 @@ import MenuNavMobile from './MenuNavMobile';
 import MenuNav from './MenuNav';
 import Settings from './Settings';
 import LogoNavMobile from './LogoNavMobile';
+import LoginButton from './LoginButton';
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -38,7 +39,11 @@ const NavBar = () => {
           <MenuNavMobile anchorElNav={anchorElNav} onHandleOpenNavMenu={handleOpenNavMenu} onHandleCloseNavMenu={handleCloseNavMenu}/>
           <LogoNavMobile />
           <MenuNav />
-          <Settings anchorElUser={anchorElUser} onHandleOpenUserMenu={handleOpenUserMenu} onHandleCloseUserMenu={handleCloseUserMenu} />
+          {
+            true
+            ? <LoginButton />
+            : <Settings anchorElUser={anchorElUser} onHandleOpenUserMenu={handleOpenUserMenu} onHandleCloseUserMenu={handleCloseUserMenu} />
+          }
         </Toolbar>
       </Container>
     </AppBar>
