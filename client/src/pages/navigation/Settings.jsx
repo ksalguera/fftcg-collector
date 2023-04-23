@@ -14,7 +14,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title='Open settings'>
         <IconButton onClick={onHandleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt='Aemy Sharp' src='#' />
+          <Avatar variant='rounded' alt='Aemy Sharp' src='#' />
         </IconButton>
       </Tooltip>
       <Menu
