@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
@@ -8,8 +8,10 @@ import MenuNav from './MenuNav';
 import Settings from './Settings';
 import LogoNavMobile from './LogoNavMobile';
 import LoginButton from './LoginButton';
+import { UserContext }from '../../contexts/UserContext';
 
 const NavBar = () => {
+  const { user } = useContext(UserContext);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -40,7 +42,7 @@ const NavBar = () => {
           <LogoNavMobile />
           <MenuNav />
           {
-            true
+            !user
             ? <LoginButton />
             : <Settings anchorElUser={anchorElUser} onHandleOpenUserMenu={handleOpenUserMenu} onHandleCloseUserMenu={handleCloseUserMenu} />
           }

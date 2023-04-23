@@ -22,8 +22,8 @@ const App = () => {
       <ThemeProvider theme={(responsiveFontSizes(theme))}>
         <CssBaseline />
         <UserContextProvider>
+          <NavBar />
           <Box px={2.5} py={2} sx={{ display: 'flex', margin: 'auto', maxWidth: 'xl'}}>
-            <NavBar />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/admin-dashboard' element={<AdminDashboard />} />

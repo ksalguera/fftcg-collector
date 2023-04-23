@@ -4,12 +4,12 @@ const UserContext = createContext();
 
 export default UserContext;
 
-const FavoriteContextProvider = ({ children }) => {
+const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch('/profile');
+      const res = await fetch('/account');
       if (!res.ok) throw new Error(res.statusText);
       const json = await res.json();
       setUser(json);
