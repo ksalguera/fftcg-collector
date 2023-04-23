@@ -3,5 +3,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   has_secure_password
 
-  validates: :email, presence: true, uniqueness: true
+  validates :email, { presence: true, uniqueness: true }
 end
