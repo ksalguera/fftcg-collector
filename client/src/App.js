@@ -13,6 +13,7 @@ import CardList from './pages/cards/CardList';
 import Home from './pages/home/Home';
 import LoginForm from './pages/profile/LoginForm';
 import SignUpForm from './pages/profile/SignUpForm';
+import AccountSettings from './pages/profile/AccountSettings';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -31,6 +32,7 @@ const App = () => {
               <Route path='/browse-cards' element={<CardList />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />
+              <Route path='/account-settings' element={<AccountSettings />} />
             </Routes>
           </Box>
         </UserContextProvider>

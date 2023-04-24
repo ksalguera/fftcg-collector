@@ -28,7 +28,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title='Open settings'>
         <IconButton onClick={onHandleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar variant='rounded' alt='Aemy Sharp' src='#' />
+          <Avatar variant='rounded' alt={user.profile.display_name} src='#' />
         </IconButton>
       </Tooltip>
       <Menu
@@ -56,7 +56,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
               '&:visited': { color: 'inherit' }
             }}
           >
-            Signed in as {user.email}
+            Signed in as {user.profile.display_name}
           </Typography>
         </MenuItem>
         <MenuItem onClick={onHandleCloseUserMenu}>
@@ -64,7 +64,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
           <Typography 
             textAlign='center' 
             component={RouterLink} 
-            to='/'
+            to='/account-settings'
             ml={2}
             sx={{ 
               textDecoration: 'none',

@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create]
   skip_before_action :authenticate_admin
-  skip_before_action :authorize_user, only: [:create]
+  skip_before_action :authorize_user, only: [:show, :create]
   
-  # GET /users/:id || GET /account
+  # GET /account
   def show
-    render json: @current_user
+    render json: current_user
   end
   
   # POST /users
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/:id
   def destroy
-    @current_user.destroy
+    current_user.destroy
     reset_session
     head :no_content
   end

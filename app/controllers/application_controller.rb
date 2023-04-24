@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
   end
 
   def require_login
-    render json: { errors: 'Access Denied' }, status: :unauthorized unless @current_user
+    render json: { errors: 'Access Denied' }, status: :unauthorized unless current_user
   end
 
   def authenticate_admin
@@ -31,7 +31,8 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_user
-    not_authorized unless @current_user.id == params[:id]
+    user = current_user
+    not_authorized unless user.id == params[:id]
   end
   
   def render_not_found_response(error)
