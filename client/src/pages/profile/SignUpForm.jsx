@@ -35,13 +35,14 @@ const SignUpForm = () => {
       if (!res.ok) {
         const errorData = await res.json();
         setErrors(errorData.errors)
-      }
+      } else {
       const data = await res.json();
       console.log(data);
       setUser(data)
       setErrors([])
       setFormData(initialState);
       navigate('/')
+      }
     } catch (error) {
       console.error(error);
     }

@@ -1,20 +1,40 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
+import { UserContext } from '../../contexts/UserContext';
 
 const LoginForm = () => {
   const initialState = { email: '', password: '' };
+  const { setUser } = useContext(UserContext);
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(formData);
-    setFormData(initialState);
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    try {
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        setErrors(errorData.errors)
+      } else {
+        const data = await res.json();
+        setUser(data)
+        setErrors([])
+        setFormData(initialState);
+        navigate('/collection-dashboard')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
@@ -41,6 +61,7 @@ const LoginForm = () => {
           onChange={handleInputChange}
         />
       </FormControl>
+      { errors && (<Alert severity='error'>{errors}</Alert>) }
       <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
         Login
       </Button>

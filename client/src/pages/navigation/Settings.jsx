@@ -1,4 +1,5 @@
-import { NavLink as RouterLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton'
@@ -8,8 +9,21 @@ import MenuItem from '@mui/material/MenuItem';
 import ManageIcon from '@mui/icons-material/ManageAccountsOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { UserContext } from '../../contexts/UserContext';
 
 const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu }) => {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const res = await fetch('/logout', { method: 'DELETE' });
+    if (res.ok) { 
+      setUser(null)
+      onHandleCloseUserMenu()
+      navigate('/')
+    }
+  }
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title='Open settings'>
@@ -42,7 +56,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
               '&:visited': { color: 'inherit' }
             }}
           >
-            Signed in as TestUser
+            Signed in as {user.email}
           </Typography>
         </MenuItem>
         <MenuItem onClick={onHandleCloseUserMenu}>
@@ -60,12 +74,12 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
             Account Settings
           </Typography>
         </MenuItem>
-        <MenuItem onClick={onHandleCloseUserMenu}>
+        <MenuItem onClick={handleLogout}>
           <LogoutIcon />
           <Typography 
             textAlign='center' 
             component={RouterLink} 
-            to='/'
+            // to='/'
             ml={2}
             sx={{ 
               textDecoration: 'none',
