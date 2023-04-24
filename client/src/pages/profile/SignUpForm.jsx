@@ -39,7 +39,7 @@ const SignUpForm = () => {
       const data = await res.json();
       console.log(data);
       setUser(data)
-      setErrors([])
+      setErrors(null)
       setFormData(initialState);
       navigate('/')
       }

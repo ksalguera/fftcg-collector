@@ -31,8 +31,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_user
-    user = current_user
-    not_authorized unless user.id == params[:id]
+    not_authorized unless session[:user_id] == params[:id].to_i
   end
   
   def render_not_found_response(error)

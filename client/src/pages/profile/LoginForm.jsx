@@ -29,7 +29,7 @@ const LoginForm = () => {
         setUser(data)
         setErrors([])
         setFormData(initialState);
-        navigate('/collection-dashboard')
+        data.is_admin ? navigate('/admin-dashboard') : navigate('/collection-dashboard')
       }
     } catch (error) {
       console.error(error);
