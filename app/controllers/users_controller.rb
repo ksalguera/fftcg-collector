@@ -29,6 +29,17 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  # POST /update_password
+  def update_password
+    user = current_user
+    if user&.authenticate(params[:current_password])
+      user.update!(password_params.except(:current_password))
+      render json: json: { message: 'Password Updated Successfully' }
+    else
+      render json: { errors: 'Current Password is Incorrect' }, status: :unauthorized
+    end
+  end
+
   private
   
   def user_params
@@ -37,5 +48,9 @@ class UsersController < ApplicationController
 
   def user_params_update
     params.permit(:email, :password, :password_confirmation, profile_attributes: [:display_name, :avatar])
+  end
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation, :current_password)
   end
 end

@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 
 import { ColorModeContext, useMode } from './contexts/ThemeContext';
-import { UserContextProvider } from './contexts/UserContext';
+import { UserContext, UserContextProvider } from './contexts/UserContext';
 
 import NavBar from './pages/navigation/NavBar';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -14,8 +14,10 @@ import Home from './pages/home/Home';
 import LoginForm from './pages/profile/LoginForm';
 import SignUpForm from './pages/profile/SignUpForm';
 import AccountSettings from './pages/profile/AccountSettings';
+import { useContext } from 'react';
 
 const App = () => {
+  // const { user } = useContext(UserContext);
   const [theme, colorMode] = useMode();
 
   return (
@@ -32,7 +34,9 @@ const App = () => {
               <Route path='/browse-cards' element={<CardList />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />
-              <Route path='/account-settings' element={<AccountSettings />} />
+              <Route path='/account-settings' element={
+                <AccountSettings />
+              } />
             </Routes>
           </Box>
         </UserContextProvider>
