@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -5,9 +6,13 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { pages } from './PageLinks';
+import { loggedInPages, loggedOutPages } from './PageLinks';
+import { UserContext}  from '../../contexts/UserContext';
 
 const MenuNavMobile = ({ anchorElNav, onHandleOpenNavMenu, onHandleCloseNavMenu }) => {
+  const { user } = useContext(UserContext);
+  const pages = user ? loggedInPages : loggedOutPages;
+
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
       <IconButton
