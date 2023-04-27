@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
-import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
-import Divider from '@mui/material/Divider';
+import { Alert, Box, Button, Divider, FormControl, TextField, Typography } from '@mui/material';
 import LoginForm from './LoginForm';
 import PasswordForm from './PasswordForm';
+import DeleteAccount from './DeleteAccount';
 
 const AccountSettings = () => {
   const { user, setUser } = useContext(UserContext);
@@ -59,14 +59,6 @@ const AccountSettings = () => {
     }
   }
 
-  const handleUserDelete = async () => {
-    const res = await fetch(`/users/${user.id}`, { method: 'DELETE' });
-    if (res.ok) { 
-      setUser(null)
-      navigate('/')
-    }
-  }
-
   return (
     <> 
       { !user ? <LoginForm />
@@ -103,13 +95,7 @@ const AccountSettings = () => {
           </Button>
         </Box>
         <PasswordForm />
-        <Divider orientation='horizontal' sx={{ my: 2, width: '100%' }} variant='fullWidth' />
-        <Button variant='outlined' color='primary' onClick={handleUserDelete}>
-          Delete Account
-        </Button>
-        <Typography variant='subtitle1' mt={1}>
-        Clicking this button will delete all user account information and data. Please note that deleted accounts cannot be restored.
-        </Typography>
+        <DeleteAccount />
       </Box>
       }
     </>

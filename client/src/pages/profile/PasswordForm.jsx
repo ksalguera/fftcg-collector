@@ -7,7 +7,7 @@ const PasswordForm = () => {
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(null);
   const [open, setOpen] = useState(false);
-  const [passwordChanged, setPasswordChanged] = useState(false);;
+  const [passwordChanged, setPasswordChanged] = useState(false);
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
   
