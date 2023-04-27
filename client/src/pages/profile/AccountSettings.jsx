@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import { Alert, Box, Button, Divider, FormControl, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, FormControl, TextField, Typography } from '@mui/material';
 import LoginForm from './LoginForm';
 import PasswordForm from './PasswordForm';
 import DeleteAccount from './DeleteAccount';
@@ -59,7 +59,7 @@ const AccountSettings = () => {
 
   return (
     <> 
-      { !user ? <LoginForm />
+      { !user ? <CircularProgress />
       :
       <Box sx={{ width: '100%' }}>
         <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
