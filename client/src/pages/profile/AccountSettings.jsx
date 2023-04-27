@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { Alert, Box, Button, Divider, FormControl, TextField, Typography } from '@mui/material';
 import LoginForm from './LoginForm';
@@ -16,7 +15,6 @@ const AccountSettings = () => {
     }
   }
   const [formData, setFormData] = useState(initialState);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
