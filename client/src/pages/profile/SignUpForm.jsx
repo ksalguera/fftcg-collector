@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
 import { UserContext } from '../../contexts/UserContext';
 
 const SignUpForm = () => {
@@ -102,6 +102,7 @@ const SignUpForm = () => {
           Display name must be between 4 and 15 characters
         </Typography>
       </FormControl>
+      { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
       <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
         Sign Up
       </Button>

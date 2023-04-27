@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  patch '/change-password', to: 'users#update_password'
+
   namespace :admins do
     delete '/users/:id', to: 'admins#destroy_user'
   end

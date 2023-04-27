@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext';
 import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import LoginForm from './LoginForm';
+import PasswordForm from './PasswordForm';
 
 const AccountSettings = () => {
   const { user, setUser } = useContext(UserContext);
@@ -14,6 +16,7 @@ const AccountSettings = () => {
     }
   }
   const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -36,7 +39,7 @@ const AccountSettings = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData)
+  
     try {
       const res = await fetch(`/users/${user.id}`, {
         method: 'PATCH',
@@ -56,13 +59,22 @@ const AccountSettings = () => {
     }
   }
 
+  const handleUserDelete = async () => {
+    const res = await fetch(`/users/${user.id}`, { method: 'DELETE' });
+    if (res.ok) { 
+      setUser(null)
+      navigate('/')
+    }
+  }
+
   return (
     <> 
       { !user ? <LoginForm />
       :
       <Box sx={{ width: '100%' }}>
         <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-          <Typography variant='h2' mb={2}>Account Information</Typography>
+          <Typography variant='h2' mb={2}>Settings</Typography>
+          <Typography variant='h3' mb={2}>Account Information</Typography>
           <FormControl fullWidth sx={{ mb: 2 }}>
             <Typography variant='subtitle1' mb={1}>Display Name</Typography>
             <TextField
@@ -90,15 +102,15 @@ const AccountSettings = () => {
             Update Account Information
           </Button>
         </Box>
+        <PasswordForm />
         <Divider orientation='horizontal' sx={{ my: 2, width: '100%' }} variant='fullWidth' />
-        <Button variant='outlined' color='primary'>
+        <Button variant='outlined' color='primary' onClick={handleUserDelete}>
           Delete Account
         </Button>
         <Typography variant='subtitle1' mt={1}>
         Clicking this button will delete all user account information and data. Please note that deleted accounts cannot be restored.
         </Typography>
       </Box>
-
       }
     </>
 

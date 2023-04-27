@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create]
   skip_before_action :authenticate_admin
-  skip_before_action :authorize_user, only: [:show, :create]
+  skip_before_action :authorize_user, only: [:show, :create, :update_password]
   
   # GET /account
   def show
@@ -29,12 +29,13 @@ class UsersController < ApplicationController
     head :no_content
   end
 
-  # POST /update_password
+  # PATCH /change-password
   def update_password
     user = current_user
     if user&.authenticate(params[:current_password])
       user.update!(password_params.except(:current_password))
-      render json: json: { message: 'Password Updated Successfully' }
+      reset_session
+      render json: { message: 'Password Updated Successfully' }
     else
       render json: { errors: 'Current Password is Incorrect' }, status: :unauthorized
     end
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
   end
 
   def password_params
-    params.require(:user).permit(:password, :password_confirmation, :current_password)
+    params.permit(:password, :password_confirmation, :current_password)
   end
 end

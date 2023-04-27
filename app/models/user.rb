@@ -4,4 +4,9 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :email, { presence: true, uniqueness: true }
+  # validates :password_confirmation, { presence: true, confirmation: true, if: :password_changed? }
+  
+  # def password_changed?
+  #   !password.nil?
+  # end
 end
