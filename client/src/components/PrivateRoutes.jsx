@@ -22,9 +22,10 @@ const PrivateRoutes = () => {
 
   return (
     <>
-    { userLoading ? <CircularProgress /> :
-      user ? <Outlet /> : <Navigate to='/login'/>
-    }
+      { 
+        userLoading ? <CircularProgress /> :
+        user ? <Outlet /> : <Navigate to='/login'/>
+      }
     </>
   )
 }

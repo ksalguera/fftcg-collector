@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { Alert, Box, Button, CircularProgress, FormControl, TextField, Typography } from '@mui/material';
-import LoginForm from './LoginForm';
 import PasswordForm from './PasswordForm';
 import DeleteAccount from './DeleteAccount';
 
