@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :expansions
   resources :profiles, only: [:update]
   resources :users, only: [:show, :create, :update, :destroy]
 
