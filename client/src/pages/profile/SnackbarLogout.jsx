@@ -1,11 +1,11 @@
 import { useEffect, useContext } from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
 
 const SnackbarLogout = ({ type, message, passwordChanged, open, onHandleClose }) => {
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {

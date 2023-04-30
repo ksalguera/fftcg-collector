@@ -7,10 +7,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { loggedInPages, loggedOutPages } from './PageLinks';
-import { UserContext}  from '../../contexts/UserContext';
+import { AppContext}  from '../../contexts/AppContext';
 
 const MenuNavMobile = ({ anchorElNav, onHandleOpenNavMenu, onHandleCloseNavMenu }) => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const pages = user ? loggedInPages : loggedOutPages;
 
   return (

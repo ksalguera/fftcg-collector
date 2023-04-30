@@ -2,12 +2,12 @@ import { useState, useContext } from 'react';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 import SnackbarLogout from './SnackbarLogout';
 import DialogGeneral from '../../components/DialogGeneral';
 
 const DeleteAccount = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const [open, setOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [passwordChanged, setPasswordChanged] = useState(false);

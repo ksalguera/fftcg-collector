@@ -8,7 +8,7 @@ class CreateExpansions < ActiveRecord::Migration[7.0]
       t.integer :normal_foil
       t.integer :special
       t.integer :special_foil
-      t.integer :full_art
+      t.integer :full_art, default: 0
       t.integer :full_art_foil
 
       t.timestamps

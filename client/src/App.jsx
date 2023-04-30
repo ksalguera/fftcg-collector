@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 
 import { ColorModeContext, useMode } from './contexts/ThemeContext';
-import { UserContextProvider } from './contexts/UserContext';
+import { AppContextProvider } from './contexts/AppContext';
 
 import NavBar from './pages/navigation/NavBar';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -23,7 +23,7 @@ const App = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={(responsiveFontSizes(theme))}>
         <CssBaseline />
-        <UserContextProvider>
+        <AppContextProvider>
           <NavBar />
           <Box px={2.5} py={2} sx={{ display: 'flex', margin: 'auto', maxWidth: 'xl'}}>
             <Routes>
@@ -38,7 +38,7 @@ const App = () => {
               </Route>
             </Routes>
           </Box>
-        </UserContextProvider>
+        </AppContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

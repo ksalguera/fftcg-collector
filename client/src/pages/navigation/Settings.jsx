@@ -9,10 +9,10 @@ import MenuItem from '@mui/material/MenuItem';
 import ManageIcon from '@mui/icons-material/ManageAccountsOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 
 const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleLogout = async () => {

@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 
 const LoginForm = () => {
   const initialState = { email: '', password: '' };
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(AppContext);
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();

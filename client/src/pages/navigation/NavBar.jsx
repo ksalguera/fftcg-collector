@@ -8,10 +8,10 @@ import MenuNav from './MenuNav';
 import Settings from './Settings';
 import LogoNavMobile from './LogoNavMobile';
 import LoginButton from './LoginButton';
-import { UserContext }from '../../contexts/UserContext';
+import { AppContext }from '../../contexts/AppContext';
 
 const NavBar = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 

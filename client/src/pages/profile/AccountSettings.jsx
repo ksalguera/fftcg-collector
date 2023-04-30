@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 import { Alert, Box, Button, CircularProgress, FormControl, TextField, Typography } from '@mui/material';
 import PasswordForm from './PasswordForm';
 import DeleteAccount from './DeleteAccount';
 
 const AccountSettings = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(AppContext);
   const [errors, setErrors] = useState(null);
   const initialState = {
     email: '',

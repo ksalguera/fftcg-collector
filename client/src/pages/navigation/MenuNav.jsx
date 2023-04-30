@@ -3,10 +3,10 @@ import { NavLink as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import navbarStyle from './MenuNavStyle';
-import { UserContext } from '../../contexts/UserContext';
+import { AppContext } from '../../contexts/AppContext';
 
 const MenuNav = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
 
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

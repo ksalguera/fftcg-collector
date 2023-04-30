@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
-import { UserContext } from '../contexts/UserContext';
+import { AppContext } from '../contexts/AppContext';
 
 const PrivateRoutes = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
 
