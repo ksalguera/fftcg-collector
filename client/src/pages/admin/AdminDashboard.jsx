@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import VerticalTabPanel from '../../components/VerticalTabPanel';
 import AdminTabsMenu from './AdminTabsMenu';
 import AdminDashboardSummary from './AdminDashboardSummary';
-import AdminSets from './sets/AdminSets';
+import AdminExpansions from './expansions/AdminExpansions';
 
 const AdminDashboard = () => {
   const [value, setValue] = useState(0);
@@ -22,7 +22,7 @@ const AdminDashboard = () => {
         Item Two
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={2}>
-        <AdminSets />
+        <AdminExpansions />
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={3}>
         Item Four

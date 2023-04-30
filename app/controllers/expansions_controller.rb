@@ -7,9 +7,17 @@ class ExpansionsController < ApplicationController
     render json: Expansion.all
   end
 
+  # admin only actions
+
   def create
     expansion = Expansion.create!(expansion_params)
     render json: expansion
+  end
+
+  def destroy
+    expansion = Expansion.find(params[:id])
+    expansion.destroy
+    head :no_content
   end
 
   private
