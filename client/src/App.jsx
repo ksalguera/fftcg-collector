@@ -15,6 +15,7 @@ import LoginForm from './pages/profile/LoginForm';
 import SignUpForm from './pages/profile/SignUpForm';
 import AccountSettings from './pages/profile/AccountSettings';
 import PrivateRoutes from './components/PrivateRoutes';
+import ExpansionForm from './pages/admin/expansions/ExpansionForm';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -33,6 +34,7 @@ const App = () => {
               <Route path='/signup' element={<SignUpForm />} />
               <Route element={<PrivateRoutes />}>
                 <Route path='/admin-dashboard' element={<AdminDashboard />} />
+                <Route path='/manage-sets/new' element={<ExpansionForm />} />
                 <Route path='/collection-dashboard' element={<CollectionDashboard />} />
                 <Route path='/account-settings' element={<AccountSettings />} />
               </Route>
