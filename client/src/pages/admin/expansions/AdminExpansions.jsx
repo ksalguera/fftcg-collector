@@ -40,7 +40,10 @@ const AdminExpansions = () => {
       </Stack>
       { checked && <ExpansionForm />}
       <Box mb={2} style={{ width: '100%' }}>
-        <DataGrid 
+        <DataGrid
+          autoHeight
+          pageSize={10}
+          pageSizeOptions={[10, 25, 100]}
           rows={expansions} 
           columns={columns}
           onRowSelectionModelChange={(newSelectionModel) => {

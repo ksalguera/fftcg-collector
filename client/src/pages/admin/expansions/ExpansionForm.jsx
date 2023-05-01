@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
 import { Alert, Box, Button, FormControl, Divider, Stack, TextField, Typography } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateField } from '@mui/x-date-pickers/DateField';
 import ExpansionFormTextfield from './ExpansionFormTextfield';
+import { AppContext } from '../../../contexts/AppContext';
 
 const ExpansionForm = () => {
   const initialState = {
@@ -16,48 +16,56 @@ const ExpansionForm = () => {
     special_foil: '',
     full_art: '',
     full_art_foil: '',
-    image: null
    }
 
+  const { expansions, setExpansions } = useContext(AppContext);
   const [formData, setFormData] = useState(initialState);
-  const [date, setDateValue] = useState('');
+  const [date, setDateValue] = useState(null);
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState(null);
-  const navigate = useNavigate();
 
   const handleInputChange = e => {
-    if (e.target.name === 'image') {
-      setFormData({...formData, [e.target.name]: e.target.files[0]});
-    } else {
-      setFormData({...formData, 
+    setFormData({...formData, 
       [e.target.name]: e.target.value,
       ['release_date']: date
     });
-    }
-
   }
+
+  const handleImageUpload = e => setImage(e.target.files[0]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    console.log(formData)
-    // try {
-    //   const res = await fetch('/users', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formData),
-    //   });
-    //   if (!res.ok) {
-    //     const errorData = await res.json();
-    //     setErrors(errorData.errors)
-    //   } else {
-    //     const data = await res.json();
-    //     setErrors(null)
-    //     setFormData(initialState);
-    //     navigate('/')
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    const form = new FormData();
+    form.append("[name]", formData.name);
+    form.append("[release_date]", formData.release_date.toISOString().substr(0, 10));
+    form.append("[normal]", formData.normal);
+    form.append("[normal_foil]", formData.normal_foil);
+    form.append("[special]", formData.special);
+    form.append("[special_foil]", formData.special_foil);
+    form.append("[full_art]", formData.full_art);
+    form.append("[full_art_foil]", formData.full_art_foil);
+    form.append("[image]", image);
+
+    try {
+      const res = await fetch('/expansions', {
+        method: 'POST',
+        body: form,
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        setErrors(errorData.errors)
+      } else {
+        const data = await res.json();
+        setErrors(null)
+        console.log(data)
+        setExpansions([...expansions, data])
+        setDateValue(null)
+        setFormData(initialState);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
   
   return (
@@ -84,13 +92,13 @@ const ExpansionForm = () => {
                 label='Release Date' 
                 size='small'
                 value={date}
-                onChange={newValue => setDateValue(newValue.toISOString().substr(0, 10))}
+                onChange={newValue => setDateValue(newValue)}
               />
             </LocalizationProvider>
           </FormControl>
           <Button variant='outlined' component='label'>
             Upload Set Image
-            <input hidden accept='image/*' multiple type='file' name='image' onChange={handleInputChange} />
+            <input hidden accept='image/*' multiple type='file' onChange={handleImageUpload} />
           </Button>  
         </Stack>
         <Stack direction='row' alignItems='center'>

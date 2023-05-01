@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 # Use active storage
 gem 'activestorage', '~> 7.0', '>= 7.0.4.3'
 
+gem 'image_processing', '~> 1.2'
+
 # Use amazon aws for active storage
 gem "aws-sdk-s3", require: false
 

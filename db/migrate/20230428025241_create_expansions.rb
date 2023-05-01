@@ -4,12 +4,12 @@ class CreateExpansions < ActiveRecord::Migration[7.0]
       t.string :name
       t.date :release_date
       t.integer :total_cards
-      t.integer :normal
-      t.integer :normal_foil
-      t.integer :special
-      t.integer :special_foil
+      t.integer :normal, default: 0
+      t.integer :normal_foil, default: 0
+      t.integer :special, default: 0
+      t.integer :special_foil, default: 0
       t.integer :full_art, default: 0
-      t.integer :full_art_foil
+      t.integer :full_art_foil, default: 0
 
       t.timestamps
     end

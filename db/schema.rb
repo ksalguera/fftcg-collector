@@ -46,12 +46,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_025241) do
     t.string "name"
     t.date "release_date"
     t.integer "total_cards"
-    t.integer "normal"
-    t.integer "normal_foil"
-    t.integer "special"
-    t.integer "special_foil"
-    t.integer "full_art"
-    t.integer "full_art_foil"
+    t.integer "normal", default: 0
+    t.integer "normal_foil", default: 0
+    t.integer "special", default: 0
+    t.integer "special_foil", default: 0
+    t.integer "full_art", default: 0
+    t.integer "full_art_foil", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
