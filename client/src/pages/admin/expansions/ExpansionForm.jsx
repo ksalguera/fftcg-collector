@@ -9,7 +9,6 @@ import { AppContext } from '../../../contexts/AppContext';
 const ExpansionForm = () => {
   const initialState = {
     name: '',
-    release_date: '',
     normal: '',
     normal_foil: '',
     special: '',
@@ -24,12 +23,7 @@ const ExpansionForm = () => {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState(null);
 
-  const handleInputChange = e => {
-    setFormData({...formData, 
-      [e.target.name]: e.target.value,
-      ['release_date']: date
-    });
-  }
+  const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
   const handleImageUpload = e => setImage(e.target.files[0]);
 
@@ -38,7 +32,7 @@ const ExpansionForm = () => {
     
     const form = new FormData();
     form.append("[name]", formData.name);
-    form.append("[release_date]", formData.release_date.toISOString().substr(0, 10));
+    form.append("[release_date]", date.toISOString().substr(0, 10));
     form.append("[normal]", formData.normal);
     form.append("[normal_foil]", formData.normal_foil);
     form.append("[special]", formData.special);
