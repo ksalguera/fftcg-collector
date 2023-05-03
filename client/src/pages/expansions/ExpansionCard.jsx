@@ -7,7 +7,7 @@ const ExpansionCard = ({ name, releaseDate, image }) => {
   const navigate = useNavigate();
 
   return (
-    <Card sx={{ width: 700 }}>
+    <Card>
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography variant='h3'>{name}</Typography>
