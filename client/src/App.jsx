@@ -16,6 +16,7 @@ import SignUpForm from './pages/profile/SignUpForm';
 import AccountSettings from './pages/profile/AccountSettings';
 import PrivateRoutes from './components/PrivateRoutes';
 import ExpansionForm from './pages/admin/expansions/ExpansionForm';
+import ExpansionList from './pages/expansions/ExpansionList';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -29,6 +30,7 @@ const App = () => {
           <Box px={2.5} py={2} sx={{ display: 'flex', margin: 'auto', maxWidth: 'xl'}}>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/browse-sets' element={<ExpansionList />} />
               <Route path='/browse-cards' element={<CardList />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />

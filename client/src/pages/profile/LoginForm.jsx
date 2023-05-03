@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
 import { AppContext } from '../../contexts/AppContext';
 

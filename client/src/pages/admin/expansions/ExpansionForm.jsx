@@ -55,7 +55,8 @@ const ExpansionForm = () => {
         console.log(data)
         setExpansions([...expansions, data])
         setDateValue(null)
-        setFormData(initialState);
+        setFormData(initialState)
+        setImage(null)
       }
     } catch (error) {
       console.error(error);

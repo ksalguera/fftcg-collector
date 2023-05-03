@@ -2,9 +2,16 @@ class ExpansionsController < ApplicationController
   #skip_before_action :require_login, only: [:index]
   skip_before_action :require_login, :authorize_user #remove after testing
   skip_before_action :authenticate_admin #remove after updating users to admin
-
+  
+  # GET /expansions
   def index
     render json: Expansion.all, include: [:image]
+  end
+  
+  # GET /expansions/:name
+  def show 
+    expansion = Expansion.find(params[:name])
+    render json: expansion
   end
 
   # admin only actions
