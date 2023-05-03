@@ -61,6 +61,12 @@ const ExpansionForm = () => {
       console.error(error);
     }
   }
+
+  const handleClear = () => {
+    setFormData(initialState)
+    setDateValue(null)
+    setImage(null)
+  }
   
   return (
     <Box sx={{ maxWidth: 'inherit' }}>
@@ -93,7 +99,8 @@ const ExpansionForm = () => {
           <Button variant='outlined' component='label'>
             Upload Set Image
             <input hidden accept='image/*' multiple type='file' onChange={handleImageUpload} />
-          </Button>  
+          </Button> 
+          {image && <Typography variant='caption' ml={2}>{image.name}</Typography>}
         </Stack>
         <Stack direction='row' alignItems='center'>
           <ExpansionFormTextfield 
@@ -138,6 +145,9 @@ const ExpansionForm = () => {
 
         <Button type='submit' variant='contained' color='primary' sx={{ width: '10%' }}>
           Add Set
+        </Button>
+        <Button type='submit' variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>
+          Clear
         </Button>
       </Box>
       <Divider orientation='horizontal' sx={{ my: 2, width: '100%' }} variant='fullWidth' />
