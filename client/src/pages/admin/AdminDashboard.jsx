@@ -4,6 +4,7 @@ import VerticalTabPanel from '../../components/VerticalTabPanel';
 import AdminTabsMenu from './AdminTabsMenu';
 import AdminDashboardSummary from './AdminDashboardSummary';
 import AdminExpansions from './expansions/AdminExpansions';
+import AdminCards from './cards/AdminCards';
 
 const AdminDashboard = () => {
   const [value, setValue] = useState(0);
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
         <AdminExpansions />
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={3}>
-        Item Four
+        <AdminCards />
       </VerticalTabPanel>
     </Box>
   );

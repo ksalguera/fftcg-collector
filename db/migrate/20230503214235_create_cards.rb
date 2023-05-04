@@ -3,8 +3,8 @@ class CreateCards < ActiveRecord::Migration[7.0]
     create_table :cards do |t|
       t.string :name
       t.string :serial
-      t.string :type
-      t.string :job
+      t.string :card_type
+      t.string :card_job
       t.integer :cost
       t.integer :power
       t.text :note

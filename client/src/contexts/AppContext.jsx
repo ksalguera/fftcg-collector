@@ -4,16 +4,27 @@ const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
   const [expansions, setExpansions] = useState(null);
+  const [cards, setCards] = useState(null);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchExpansion = async () => {
+    const fetchExpansions = async () => {
       const res = await fetch('/expansions');
       if (!res.ok) throw new Error(res.statusText);
       const json = await res.json();
       setExpansions(json);
     };
-    fetchExpansion().catch(error => error.message);
+    fetchExpansions().catch(error => error.message);
+  }, []);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const res = await fetch('/cards');
+      if (!res.ok) throw new Error(res.statusText);
+      const json = await res.json();
+      setCards(json);
+    };
+    fetchCards().catch(error => error.message);
   }, []);
 
   useEffect(() => {
@@ -27,7 +38,7 @@ const AppContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ expansions, setExpansions, user, setUser }}>
+    <AppContext.Provider value={{ expansions, setExpansions, cards, setCards, user, setUser }}>
       {children}
     </AppContext.Provider>
   );

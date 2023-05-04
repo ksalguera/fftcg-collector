@@ -1,4 +1,11 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :name, :serial, :type, :job, :category, :cost, :power, :note
-  has_one :expansion
+  include Rails.application.routes.url_helpers
+  attributes :id, :name, :serial, :card_type, :card_job, :cost, :power, :note, :image_url
+  belongs_to :expansion, serializer: ShortExpansionSerializer
+
+  def image_url
+    if object.image.attached?
+      rails_blob_url(object.image, only_path: true)
+    end
+  end
 end

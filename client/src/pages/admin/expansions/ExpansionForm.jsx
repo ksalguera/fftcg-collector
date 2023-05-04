@@ -144,7 +144,7 @@ const ExpansionForm = () => {
 
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
 
-        <Button type='submit' variant='contained' color='primary' sx={{ width: '10%' }}>
+        <Button type='submit' variant='contained' color='primary' sx={{ width: '10%', mt: 2 }}>
           Add Set
         </Button>
         <Button type='submit' variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>

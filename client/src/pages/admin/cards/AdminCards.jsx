@@ -11,40 +11,39 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import { AppContext } from '../../../contexts/AppContext';
-import columns from './ExpansionColumns';
-import ExpansionForm from './ExpansionForm';
+import columns from './CardColumns';
+import CardForm from './CardForm';
 
-
-const AdminExpansions = () => {
-  const { expansions, setExpansions } = useContext(AppContext);
+const AdminCards = () => {
+  const { cards, setCards } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
   const [selectionModel, setSelectionModel] = useState(null);
 
   const handleDelete = async () => {
-    const res = await fetch(`/expansions/${selectionModel[0]}`, { method: 'DELETE' });
+    const res = await fetch(`/cards/${selectionModel[0]}`, { method: 'DELETE' });
     if (res.ok) { 
-      const updatedExpansions = expansions.filter(expansion => expansion.id !== selectionModel[0]);
-      setExpansions(updatedExpansions)
+      const updatedCards = cards.filter(expansion => expansion.id !== selectionModel[0]);
+      setCards(updatedCards)
       setSelectionModel(null)
     }
   }
-  
+
   return (
     <>
       <Stack direction='row' justifyContent='space-between'>
-        <PageTitle title='Manage Sets' />
+        <PageTitle title='Manage Cards' />
         <Stack direction='row' alignItems='baseline'>
-          <Typography variant='body2'>Add Expansion</Typography>
+          <Typography variant='body2'>Add Card</Typography>
           <Switch checked={checked} onChange={e => setChecked(e.target.checked)}/>
         </Stack>
       </Stack>
-      { checked && <ExpansionForm />}
+      { checked && <CardForm />}
       <Box mb={2} style={{ width: '100%' }}>
         <DataGrid
           autoHeight
           pageSize={10}
           pageSizeOptions={[10, 25, 100]}
-          rows={expansions} 
+          rows={cards} 
           columns={columns}
           onRowSelectionModelChange={(newSelectionModel) => {
             setSelectionModel(newSelectionModel);
@@ -66,4 +65,4 @@ const AdminExpansions = () => {
   )
 }
 
-export default AdminExpansions;
+export default AdminCards;
