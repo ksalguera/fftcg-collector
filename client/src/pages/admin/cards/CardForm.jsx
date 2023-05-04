@@ -145,10 +145,10 @@ const CardForm = () => {
 
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
 
-        <Button type='submit' variant='contained' color='primary' sx={{ width: '15%', mt: 2 }}>
+        <Button type='submit' disabled={!image} variant='contained' color='primary' sx={{ width: '15%', mt: 2 }}>
           Add Card
         </Button>
-        <Button type='submit' variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>
+        <Button variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>
           Clear
         </Button>
       </Box>
