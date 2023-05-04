@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   has_one_attached :image
   belongs_to :expansion
+  has_many :variants, through: :cardvariants
   
   validates :name, { presence: true, length: { minimum: 2, maximum: 25 } }
   validates :serial, { presence: true, uniqueness: true, length: { minimum: 6, maximum: 7 } }

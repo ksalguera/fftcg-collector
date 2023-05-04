@@ -13,11 +13,13 @@ import PageviewIcon from '@mui/icons-material/Pageview';
 import { AppContext } from '../../../contexts/AppContext';
 import columns from './CardColumns';
 import CardForm from './CardForm';
+import AdminCardVariants from './AdminCardVariants';
 
 const AdminCards = () => {
   const { cards, setCards } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
   const [selectionModel, setSelectionModel] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleDelete = async () => {
     const res = await fetch(`/cards/${selectionModel[0]}`, { method: 'DELETE' });
@@ -27,6 +29,8 @@ const AdminCards = () => {
       setSelectionModel(null)
     }
   }
+
+  const handleDialogClose = () => setOpenDialog(false);
 
   return (
     <>
@@ -54,13 +58,13 @@ const AdminCards = () => {
       <Stack direction='row' justifyContent='space-between'>
         <Box>
          <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={() => console.log(selectionModel[0])}>View Page</Button>
-         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={() => console.log(selectionModel)}>Edit</Button>
+         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={() => setOpenDialog(true)}>Edit</Button>
         </Box>
         <IconButton disabled={!selectionModel || selectionModel.length === 0} color='error' onClick={handleDelete} >
           <DeleteIcon />
         </IconButton>
       </Stack>
-
+      <AdminCardVariants open={openDialog} onHandleDialogClose={handleDialogClose} />
     </>
   )
 }

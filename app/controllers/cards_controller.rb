@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  skip_before_action :require_login
+  skip_before_action :require_login, only: [:index, :show]
   skip_before_action :authorize_user
   skip_before_action :authenticate_admin #remove after updating users to admin
 
