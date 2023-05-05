@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PageTitle from '../../../components/PageTitle';
 import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
@@ -13,13 +14,12 @@ import PageviewIcon from '@mui/icons-material/Pageview';
 import { AppContext } from '../../../contexts/AppContext';
 import columns from './CardColumns';
 import CardForm from './CardForm';
-import AdminCardVariants from './AdminCardVariants';
 
 const AdminCards = () => {
   const { cards, setCards } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
   const [selectionModel, setSelectionModel] = useState(null);
-  const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     const res = await fetch(`/cards/${selectionModel[0]}`, { method: 'DELETE' });
@@ -30,7 +30,11 @@ const AdminCards = () => {
     }
   }
 
-  const handleDialogClose = () => setOpenDialog(false);
+  const handleCardEdit = () => {
+    const card = cards.find(card => card.id === selectionModel[0])
+    navigate(`/cards/${card.serial}/edit`)
+  }
+
 
   return (
     <>
@@ -58,13 +62,12 @@ const AdminCards = () => {
       <Stack direction='row' justifyContent='space-between'>
         <Box>
          <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={() => console.log(selectionModel[0])}>View Page</Button>
-         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={() => setOpenDialog(true)}>Edit</Button>
+         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={handleCardEdit}>Edit</Button>
         </Box>
         <IconButton disabled={!selectionModel || selectionModel.length === 0} color='error' onClick={handleDelete} >
           <DeleteIcon />
         </IconButton>
       </Stack>
-      <AdminCardVariants open={openDialog} onHandleDialogClose={handleDialogClose} />
     </>
   )
 }

@@ -10,8 +10,12 @@ class CardsController < ApplicationController
   
   # GET /cards/:serial
   def show 
-    card = Card.find(params[:name])
-    render json: card, include: [:expansion]
+    card = Card.find_by(serial: params[:id])
+    if card.nil?
+      render json: { errors: 'Card Not Found'}, status: :not_found
+    else
+     render json: card, include: [:expansion]
+    end
   end
 
   # admin only actions
@@ -20,6 +24,17 @@ class CardsController < ApplicationController
   def create
     card = Card.create!(card_params)
     render json: card
+  end
+
+  # PATCH /cards/:serial
+  def update
+    card = Card.find_by(serial: params[:id])
+    if card.nil?
+      render json: { errors: 'Card Not Found'}, status: :not_found
+    else
+      card.update!(card_params)
+      render json: card, include: [:expansion]
+    end
   end
   
   # DELETE /cards/:id
