@@ -1,3 +1,3 @@
 class VariantSerializer < ActiveModel::Serializer
-  attributes :id, :type
+  attributes :id, :name
 end

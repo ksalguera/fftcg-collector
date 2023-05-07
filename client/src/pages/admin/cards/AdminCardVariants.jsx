@@ -1,66 +1,38 @@
-import { useState } from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Checkbox, FormLabel, FormControl, FormControlLabel, FormGroup } from '@mui/material';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, Stack, Typography } from '@mui/material';
 
-const AdminCardVariants = ({ open, onHandleDialogClose }) => {
-  const [formData, setFormData] = useState({
-    normal: false,
-    normal_foil: false,
-    special: false,
-    special_foil: false,
-    full_art: false,
-    full_art_foil: false
-  });
-
-  const handleChange = event => setFormData({...formData, [event.target.name]: event.target.checked })
-  
-  const handleConfirmation = () => {
-    console.log(formData)
-  } 
-
+const AdminCardVariants = ({ variants, onEditVariants }) => {
   return (
-    <Dialog open={open} onClose={onHandleDialogClose}>
-      <DialogTitle>Select Card Variants</DialogTitle>
-      <DialogContent sx={{ pr: 20 }}>
+    <Stack>
+      <Typography variant='h3' mb={2}>Card Variants</Typography>
       <FormControl component='fieldset' variant='standard'>
         <FormGroup>
           <FormControlLabel
             label='Normal'
-            control={ <Checkbox checked={formData.normal} onChange={handleChange} name='normal' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('normal')} onChange={onEditVariants} value={1} name='normal' /> }
           />
           <FormControlLabel
             label='Normal (Foil)'
-            control={ <Checkbox checked={formData.normal_foil} onChange={handleChange} name='normal_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('normal_foil') ? true : false} onChange={onEditVariants} value={2} name='normal_foil' /> }
           />
           <FormControlLabel
             label='Special'
-            control={ <Checkbox checked={formData.special} onChange={handleChange} name='special' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('special') ? true : false} onChange={onEditVariants} value={3} name='special' /> }
           />
           <FormControlLabel
             label='Special (Foil)'
-            control={ <Checkbox checked={formData.special_foil} onChange={handleChange} name='special_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('special_foil') ? true : false} onChange={onEditVariants} value={4} name='special_foil' /> }
           />
           <FormControlLabel
             label='Full Art'
-            control={ <Checkbox checked={formData.full_art} onChange={handleChange} name='full_art' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('full_art') ? true : false} onChange={onEditVariants} value={5} name='full_art' /> }
           />
           <FormControlLabel
             label='Full Art (Foil)'
-            control={ <Checkbox checked={formData.full_art_foil} onChange={handleChange} name='full_art_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('full_art_foil') ? true : false} onChange={onEditVariants} value={6} name='full_art_foil' /> }
           />
         </FormGroup>
-        </FormControl>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onHandleDialogClose}>Cancel</Button>
-        <Button onClick={handleConfirmation} autoFocus>Confirm</Button>
-      </DialogActions>
-    </Dialog>
+      </FormControl>
+    </Stack>
   )
 }
 

@@ -1,3 +1,4 @@
 class Variant < ApplicationRecord
-  has_many :cards, through: :cardvariants
+  has_many :card_variants
+  has_many :cards, through: :card_variants
 end

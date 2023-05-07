@@ -5,7 +5,7 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    render json: Card.all, include: [:expansion]
+    render json: Card.all, include: [:expansion, :variants]
   end
   
   # GET /cards/:serial
@@ -14,7 +14,7 @@ class CardsController < ApplicationController
     if card.nil?
       render json: { errors: 'Card Not Found'}, status: :not_found
     else
-     render json: card, include: [:expansion]
+     render json: card, include: [:expansion, :variants]
     end
   end
 
@@ -32,8 +32,8 @@ class CardsController < ApplicationController
     if card.nil?
       render json: { errors: 'Card Not Found'}, status: :not_found
     else
-      card.update!(card_params)
-      render json: card, include: [:expansion]
+      card.update!(card_params_update)
+      render json: card, include: [:expansion, :variants]
     end
   end
   
@@ -48,5 +48,9 @@ class CardsController < ApplicationController
 
   def card_params
     params.permit(:name, :expansion_id, :card_type, :serial, :card_job, :cost, :power, :image)
+  end
+
+  def card_params_update
+    params.permit(:name, :expansion_id, :serial, :card_job, :card_type, :cost, :power, :note, variant_ids: [])
   end
 end
