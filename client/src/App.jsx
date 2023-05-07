@@ -15,9 +15,9 @@ import LoginForm from './pages/profile/LoginForm';
 import SignUpForm from './pages/profile/SignUpForm';
 import AccountSettings from './pages/profile/AccountSettings';
 import PrivateRoutes from './components/PrivateRoutes';
-import ExpansionForm from './pages/admin/expansions/ExpansionForm';
 import ExpansionList from './pages/expansions/ExpansionList';
 import CardEditForm from './pages/admin/cards/CardEditForm';
+import Footer from './pages/resources/Footer';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -28,7 +28,7 @@ const App = () => {
         <CssBaseline />
         <AppContextProvider>
           <NavBar />
-          <Box px={2.5} py={2} sx={{ display: 'flex', margin: 'auto', maxWidth: 'xl'}}>
+          <Box px={2.5} py={2} sx={{ display: 'flex', flexDirection: 'column', margin: 'auto', maxWidth: 'xl'}}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/browse-sets' element={<ExpansionList />} />
@@ -42,6 +42,7 @@ const App = () => {
                 <Route path='/account-settings' element={<AccountSettings />} />
               </Route>
             </Routes>
+            <Footer />
           </Box>
         </AppContextProvider>
       </ThemeProvider>
