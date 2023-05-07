@@ -18,6 +18,7 @@ import PrivateRoutes from './components/PrivateRoutes';
 import ExpansionList from './pages/expansions/ExpansionList';
 import CardEditForm from './pages/admin/cards/CardEditForm';
 import Footer from './pages/resources/Footer';
+import ExpansionDetail from './pages/expansions/ExpansionDetail';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -32,6 +33,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/browse-sets' element={<ExpansionList />} />
+              <Route path='/browse-sets/:name' element={<ExpansionDetail />} />
               <Route path='/browse-cards' element={<CardList />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />

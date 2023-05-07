@@ -10,8 +10,8 @@ class ExpansionsController < ApplicationController
   
   # GET /expansions/:name
   def show 
-    expansion = Expansion.find(params[:name])
-    render json: expansion
+    expansion = Expansion.find_by(name: params[:id])
+    render json: expansion, include: ['cards', 'cards.variants']
   end
 
   # admin only actions
