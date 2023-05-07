@@ -31,6 +31,10 @@ class CardsController < ApplicationController
     card = Card.find_by(serial: params[:id])
     if card.nil?
       render json: { errors: 'Card Not Found'}, status: :not_found
+    elsif params[:image]
+      card.image.purge
+      card.image.attach(params[:image])
+      render json: card, include: [:expansion, :variants]
     else
       card.update!(card_params_update)
       render json: card, include: [:expansion, :variants]
@@ -51,6 +55,6 @@ class CardsController < ApplicationController
   end
 
   def card_params_update
-    params.permit(:name, :expansion_id, :serial, :card_job, :card_type, :cost, :power, :note, variant_ids: [])
+    params.permit(:name, :expansion_id, :serial, :card_job, :card_type, :cost, :power, :note, :image, variant_ids: [])
   end
 end

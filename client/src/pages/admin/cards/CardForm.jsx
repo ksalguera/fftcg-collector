@@ -25,8 +25,6 @@ const CardForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(formData)
     
     const form = new FormData();
     form.append("[name]", formData.name);

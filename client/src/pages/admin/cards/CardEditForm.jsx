@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import { Alert, Box, Button, CircularProgress, FormControl, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import { AppContext } from '../../../contexts/AppContext';
 import AdminCardVariants from './AdminCardVariants';
+import CardImageForm from './CardImageForm';
 
 const CardEditForm = () => {
   let { serial } = useParams();
   const { expansions, cards, setCards } = useContext(AppContext);
+  const [card, setCard] = useState({});
   const [variants, setVariants] = useState(null);
   const [errors, setErrors] = useState(null);
 
@@ -40,6 +42,7 @@ const CardEditForm = () => {
         note: json.note,
         variant_ids: json.variants?.map(variant => variant.id) || []
       })
+      setCard(json)
       setVariants(json.variants?.map(variant => variant.name))
     }
     fetchCard()
@@ -65,6 +68,8 @@ const CardEditForm = () => {
       setFormData({...formData, variant_ids: [...formData.variant_ids, variant]})
     }
   }
+
+  const handleImageChange = data => setCard(data);
  
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -81,6 +86,7 @@ const CardEditForm = () => {
       } else {
         const data = await res.json();
         setErrors(null)
+        setCard(data)
         const updatedCards = cards.map(card => card.id === data.id ? data : card)
         setCards(updatedCards)
         console.log(data)
@@ -94,9 +100,9 @@ const CardEditForm = () => {
     <> 
       { !formData ? <CircularProgress />
       :
-      <Box>
-        <Typography variant='h2' mb={2}>{formData.name} ({formData.serial})</Typography>
-        <Stack direction='row' spacing={10}>
+      <Box sx={{ width: '100%' }}>
+        <Typography variant='h2' mb={2}>{card.name} ({card.serial})</Typography>
+        <Stack direction='row' spacing={20}>
           <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
             <Typography variant='h3' mb={2}>Base Card Information</Typography>
             <FormControl fullWidth sx={{ mb: 2 }}>
@@ -182,6 +188,7 @@ const CardEditForm = () => {
             </Button>
           </Box>
           <AdminCardVariants variants={variants} onEditVariants={handleEditVariants} />
+          <CardImageForm image={card.image_url} serial={serial} onImageChange={handleImageChange} />
         </Stack>
       </Box>
       }
