@@ -20,6 +20,7 @@ import CardEditForm from './pages/admin/cards/CardEditForm';
 import Footer from './pages/resources/Footer';
 import ExpansionDetail from './pages/expansions/ExpansionDetail';
 import AdminRoute from './components/AdminRoute';
+import NotFound from './pages/resources/NotFound';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path='/collection-dashboard' element={<CollectionDashboard />} />
                 <Route path='/account-settings' element={<AccountSettings />} />
               </Route>
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </Box>
           <Footer />
