@@ -5,7 +5,7 @@ import  Typography from '@mui/material/Typography';
 
 const Footer = () => {
   return (
-    <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}>
+    <Box sx={{ left: 0, right: 0 }}>
       <Container maxWidth='xl' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Stack>
           <Typography variant='caption' mb={1}>

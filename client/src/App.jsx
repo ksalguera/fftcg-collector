@@ -29,7 +29,7 @@ const App = () => {
         <CssBaseline />
         <AppContextProvider>
           <NavBar />
-          <Box px={2.5} py={2} sx={{ display: 'flex', flexDirection: 'column', margin: 'auto', maxWidth: 'xl'}}>
+          <Box px={2.5} py={2} sx={{ display: 'flex', flexDirection: 'column', margin: 'auto', minHeight: '87vh', maxWidth: 'xl'}}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/browse-sets' element={<ExpansionList />} />
@@ -44,8 +44,8 @@ const App = () => {
                 <Route path='/account-settings' element={<AccountSettings />} />
               </Route>
             </Routes>
-            <Footer />
           </Box>
+          <Footer />
         </AppContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

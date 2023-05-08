@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { Box, Divider, IconButton, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Divider, IconButton, Link, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/LibraryAdd';
 import { AppContext } from '../contexts/AppContext';
 
@@ -12,16 +13,17 @@ const Card = ({ name, serial, image, variants }) => {
   const hasFullArtVariant = variants && variants.some(variant => variant.name === 'full_art');
   const hasFullArtFoilVariant = variants && variants.some(variant => variant.name === 'full_art_foil');
   const N = hasNormalVariant ? 'N' : null;
-  const NF = hasNormalFoilVariant ? 'NF' : null;
+  const NF = hasNormalFoilVariant ? 'F' : null;
   const S = hasSpecialVariant ? 'S' : null;
-  const SF = hasSpecialFoilVariant ? 'SF' : null;
+  const SF = hasSpecialFoilVariant ? 'F' : null;
   const FA = hasFullArtVariant ? 'FA' : null;
   const FAF = hasFullArtFoilVariant ? 'FAF' : null;
 
   return (
     <Box>
       <Stack direction='row' justifyContent='space-between' mb={1}>
-        <Typography variant='h5'>{name}</Typography>
+        <Link component={RouterLink} to='/' color='secondary.main'>{name}</Link>
+        {/* <Typography variant='h5'>{name}</Typography> */}
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
       <img src={image} style={{ maxWidth: '100%', height: 'auto' }} />
