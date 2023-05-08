@@ -19,6 +19,7 @@ import ExpansionList from './pages/expansions/ExpansionList';
 import CardEditForm from './pages/admin/cards/CardEditForm';
 import Footer from './pages/resources/Footer';
 import ExpansionDetail from './pages/expansions/ExpansionDetail';
+import AdminRoute from './components/AdminRoute';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -38,7 +39,9 @@ const App = () => {
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />
               <Route element={<PrivateRoutes />}>
-                <Route path='/admin-dashboard' element={<AdminDashboard />} />
+                <Route element={<AdminRoute />}>
+                  <Route path='/admin-dashboard' element={<AdminDashboard />} />
+                </Route>
                 <Route path='/cards/:serial/edit' element={<CardEditForm />} />
                 <Route path='/collection-dashboard' element={<CollectionDashboard />} />
                 <Route path='/account-settings' element={<AccountSettings />} />
