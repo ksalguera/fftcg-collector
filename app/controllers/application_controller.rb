@@ -23,11 +23,11 @@ class ApplicationController < ActionController::API
   end
 
   def require_login
-    render json: { errors: 'Access Denied' }, status: :unauthorized unless current_user
+    render json: { errors: ['Access Denied'] }, status: :unauthorized unless current_user
   end
 
   def authenticate_admin
-    render json: { errors: 'Access Denied' }, status: :unauthorized unless @admin_user
+    render json: { errors: ['Access Denied'] }, status: :unauthorized unless @admin_user
   end
 
   def authorize_user

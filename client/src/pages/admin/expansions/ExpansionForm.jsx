@@ -52,7 +52,6 @@ const ExpansionForm = () => {
       } else {
         const data = await res.json();
         setErrors(null)
-        console.log(data)
         setExpansions([...expansions, data])
         setDateValue(null)
         setFormData(initialState)

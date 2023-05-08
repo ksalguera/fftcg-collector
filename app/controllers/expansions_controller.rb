@@ -1,7 +1,7 @@
 class ExpansionsController < ApplicationController
-  #skip_before_action :require_login, only: [:index]
-  skip_before_action :require_login, :authorize_user #remove after testing
-  skip_before_action :authenticate_admin #remove after updating users to admin
+  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :authenticate_admin, only: [:index, :show]
+  skip_before_action :authorize_user
   
   # GET /expansions
   def index

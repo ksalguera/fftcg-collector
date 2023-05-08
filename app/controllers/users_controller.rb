@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   
   # POST /users
   def create
-    user = User.create!(user_params)
+    is_admin = (params[:email] == Rails.application.credentials.admin)
+    user = User.create!(user_params.merge(is_admin: is_admin))
     session[:user_id] = user.id
     render json: user
   end
