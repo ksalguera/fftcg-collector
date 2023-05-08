@@ -2,16 +2,15 @@ import { useContext } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
-import { loggedInPages, loggedOutPages } from './PageLinks';
 import { AppContext}  from '../../contexts/AppContext';
+import navbarStyle from './MenuNavStyleMobile';
 
 const MenuNavMobile = ({ anchorElNav, onHandleOpenNavMenu, onHandleCloseNavMenu }) => {
   const { user } = useContext(AppContext);
-  const pages = user ? loggedInPages : loggedOutPages;
 
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -43,21 +42,25 @@ const MenuNavMobile = ({ anchorElNav, onHandleOpenNavMenu, onHandleCloseNavMenu 
           display: { xs: 'block', md: 'none' },
         }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page.name} onClick={onHandleCloseNavMenu}>
-            <Typography 
-              textAlign='center' 
-              component={RouterLink} 
-              to={page.link}
-              sx={{ 
-                textDecoration: 'none',
-                '&:visited': { color: 'inherit' }
-              }}
-            >
-              {page.name}
-            </Typography>
+        {(user && user.is_admin) && 
+          <MenuItem onClick={onHandleCloseNavMenu}>
+            <Link component={RouterLink} underline='none' sx={navbarStyle} to='/admin-dashboard'>Admin Dashboard</Link>
           </MenuItem>
-        ))}
+        }
+        {user &&  
+          <MenuItem onClick={onHandleCloseNavMenu}>
+            <Link component={RouterLink} underline='none' sx={navbarStyle} to='/collection-dashboard'>Collection</Link>
+          </MenuItem>
+        }
+        <MenuItem onClick={onHandleCloseNavMenu}>
+          <Link component={RouterLink} underline='none' sx={navbarStyle} to='/browse-sets'>Sets</Link>
+        </MenuItem>
+        <MenuItem onClick={onHandleCloseNavMenu}>
+          <Link component={RouterLink} underline='none' sx={navbarStyle} to='/browse-cards'>Cards</Link>
+        </MenuItem>
+        <MenuItem onClick={onHandleCloseNavMenu}>
+          <Link component={RouterLink} underline='none' sx={navbarStyle} to='/'>Resources</Link>
+        </MenuItem>
       </Menu>
     </Box> 
   )
