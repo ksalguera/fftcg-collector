@@ -27,7 +27,7 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_admin
-    render json: { errors: ['Access Denied'] }, status: :unauthorized unless @admin_user
+    render json: { errors: ['Access Denied'] }, status: :unauthorized unless admin_user
   end
 
   def authorize_user
