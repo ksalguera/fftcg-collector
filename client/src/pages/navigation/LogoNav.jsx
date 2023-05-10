@@ -1,11 +1,14 @@
 import { NavLink as RouterLink } from 'react-router-dom';
+import { useMediaQuery } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import logo from '../../assets/Logo.png'
+
 const LogoNav = () => {
+  const showImage = useMediaQuery('(min-width:960px)'); 
+
   return (
     <>
-     <img src={logo} height='30px' />
-      {/* Add Logo Here */}
+      {showImage && <img src={logo} height='30px' />}
       <Typography
         variant='h4'
         noWrap

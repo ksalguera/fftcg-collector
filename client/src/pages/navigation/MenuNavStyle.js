@@ -10,8 +10,8 @@ const navbarStyle = {
     color: 'gray'
   },
   mx: 2,
-  fontSize: { md: '.7rem', lg: '0.8rem', xl: '0.9rem' },
-  textTransform: 'uppercase',
+  fontSize: { md: '.8rem', lg: '0.9rem', xl: '0.95rem' },
+  textTransform: 'uppercase'
 }
 
 export default navbarStyle;
