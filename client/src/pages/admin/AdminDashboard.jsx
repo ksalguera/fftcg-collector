@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}>
+    <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }} className='container'>
       <AdminTabsMenu value={value} handleChange={handleChange} />
       <VerticalTabPanel value={value} index={0}>
         <AdminDashboardSummary />

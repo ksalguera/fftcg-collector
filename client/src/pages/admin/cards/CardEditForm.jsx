@@ -100,7 +100,7 @@ const CardEditForm = () => {
     <> 
       { !formData ? <CircularProgress />
       :
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%', flexDirection: 'column' }} className='container'>
         <Typography variant='h2' mb={2}>{card.name} ({card.serial})</Typography>
         <Stack direction='row' spacing={20}>
           <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>

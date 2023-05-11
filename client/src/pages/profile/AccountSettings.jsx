@@ -60,7 +60,7 @@ const AccountSettings = () => {
     <> 
       { !user ? <CircularProgress />
       :
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%', flexDirection: 'column' }} className='container'>
         <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
           <Typography variant='h2' mb={2}>Settings</Typography>
           <Typography variant='h3' mb={2}>Account Information</Typography>

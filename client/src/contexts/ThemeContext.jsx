@@ -8,8 +8,8 @@ export const themeSettings = mode => {
       mode: mode,
       ...(mode === 'light'
         ? {
-          primary: { main: grey[800] },
-          secondary: { main: green[500] },
+          primary: { main: grey[900] },
+          secondary: { main: indigo[900] },
           neutral: {
             dark: grey[700],
             main: grey[500],

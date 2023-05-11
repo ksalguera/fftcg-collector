@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 
 import { ColorModeContext, useMode } from './contexts/ThemeContext';
 import { AppContextProvider } from './contexts/AppContext';
@@ -31,7 +30,6 @@ const App = () => {
         <CssBaseline />
         <AppContextProvider>
           <NavBar />
-          <Box px={2.5} py={2} sx={{ display: 'flex', flexDirection: 'column', margin: 'auto', minHeight: '87vh', maxWidth: 'xl'}}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/browse-sets' element={<ExpansionList />} />
@@ -49,7 +47,6 @@ const App = () => {
               </Route>
               <Route path='*' element={<NotFound />} />
             </Routes>
-          </Box>
           <Footer />
         </AppContextProvider>
       </ThemeProvider>

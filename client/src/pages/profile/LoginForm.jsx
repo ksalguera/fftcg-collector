@@ -37,38 +37,40 @@ const LoginForm = () => {
   }
 
   return (
-    <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-      <Typography variant='h2' mb={2}>Login to Your Account</Typography>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Email Address</Typography>
-        <TextField
-          required
-          id='email'
-          type='email'
-          name='email'
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-      </FormControl>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Password</Typography>
-        <TextField
-          required
-          id='password'
-          type='password'
-          name='password'
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-      </FormControl>
-      { errors && (<Alert severity='error'>{errors}</Alert>) }
-      <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
-        Login
-      </Button>
-      <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
-        Cancel
-      </Button>
-      <Typography mt={2}>Need an account? <Link href='/signup'>SIGN UP</Link></Typography> 
+    <Box sx={{ flexDirection: 'column' }} className='container'>
+      <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
+        <Typography variant='h2' mb={2}>Login to Your Account</Typography>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Email Address</Typography>
+          <TextField
+            required
+            id='email'
+            type='email'
+            name='email'
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </FormControl>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Password</Typography>
+          <TextField
+            required
+            id='password'
+            type='password'
+            name='password'
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </FormControl>
+        { errors && (<Alert severity='error'>{errors}</Alert>) }
+        <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
+          Login
+        </Button>
+        <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
+          Cancel
+        </Button>
+        <Typography mt={2}>Need an account? <Link href='/signup'>SIGN UP</Link></Typography> 
+      </Box>
     </Box>
   );
 };

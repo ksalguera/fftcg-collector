@@ -29,7 +29,7 @@ const DeleteAccount = () => {
   return (
     <>
       <Divider orientation='horizontal' sx={{ my: 2, width: '100%' }} variant='fullWidth' />
-      <Button variant='outlined' color='primary' onClick={handleDiaglogOpen}>
+      <Button variant='outlined' color='primary' onClick={handleDiaglogOpen} sx={{ width: '12%'}}>
         Delete Account
       </Button>
       <Typography variant='subtitle1' mt={1}>

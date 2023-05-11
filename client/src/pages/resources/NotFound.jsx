@@ -1,8 +1,11 @@
+import Box from '@mui/material/Box';
 import PageTitle from "../../components/PageTitle";
 
 const NotFound = () => {
   return (
-    <PageTitle title='404 - Not Found' />
+    <Box className='container'>
+      <PageTitle title='404 - Not Found' />
+    </Box> 
   )
 }
 

@@ -48,67 +48,69 @@ const SignUpForm = () => {
   }
   
   return (
-    <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-      <Typography variant='h2' mb={2}>Create an Account</Typography>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Email Address</Typography>
-        <TextField
-          // required
-          type='email'
-          name='email'
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-        <Typography variant='caption' mb={1}>
-          Email addresses must be valid: abc@xyz.com
-        </Typography>
-      </FormControl>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Password</Typography>
-        <TextField
-          // required
-          type='password'
-          name='password'
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-        <Typography variant='caption' mb={1}>
-          Password must be 6 or more characters
-        </Typography>
-      </FormControl>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Password Confirmation</Typography>
-        <TextField
-          // required
-          type='password'
-          name='password_confirmation'
-          value={formData.password_confirmation}
-          onChange={handleInputChange}
-        />
-        <Typography variant='caption' mb={1}>
-          Verify Password
-        </Typography>
-      </FormControl>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography variant='subtitle1' mb={1}>Display Name</Typography>
-        <TextField
-          // required
-          name='display_name'
-          value={formData.profile_attributes.display_name}
-          onChange={handleInputChange}
-        />
-        <Typography variant='caption' mb={1}>
-          Display name must be between 4 and 15 characters
-        </Typography>
-      </FormControl>
-      { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
-      <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
-        Sign Up
-      </Button>
-      <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
-        Cancel
-      </Button>
-      <Typography mt={2}>Already have an account? <Link href='/login'>LOGIN</Link></Typography> 
+    <Box sx={{ flexDirection: 'column'}} className='container'>
+      <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
+        <Typography variant='h2' mb={2}>Create an Account</Typography>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Email Address</Typography>
+          <TextField
+            // required
+            type='email'
+            name='email'
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          <Typography variant='caption' mb={1}>
+            Email addresses must be valid: abc@xyz.com
+          </Typography>
+        </FormControl>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Password</Typography>
+          <TextField
+            // required
+            type='password'
+            name='password'
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+          <Typography variant='caption' mb={1}>
+            Password must be 6 or more characters
+          </Typography>
+        </FormControl>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Password Confirmation</Typography>
+          <TextField
+            // required
+            type='password'
+            name='password_confirmation'
+            value={formData.password_confirmation}
+            onChange={handleInputChange}
+          />
+          <Typography variant='caption' mb={1}>
+            Verify Password
+          </Typography>
+        </FormControl>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <Typography variant='subtitle1' mb={1}>Display Name</Typography>
+          <TextField
+            // required
+            name='display_name'
+            value={formData.profile_attributes.display_name}
+            onChange={handleInputChange}
+          />
+          <Typography variant='caption' mb={1}>
+            Display name must be between 4 and 15 characters
+          </Typography>
+        </FormControl>
+        { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
+        <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
+          Sign Up
+        </Button>
+        <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
+          Cancel
+        </Button>
+        <Typography mt={2}>Already have an account? <Link href='/login'>LOGIN</Link></Typography> 
+      </Box>
     </Box>
   );
 };

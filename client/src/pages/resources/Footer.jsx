@@ -1,11 +1,14 @@
+import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import  Typography from '@mui/material/Typography';
+import Typography from '@mui/material/Typography';
 
 const Footer = () => {
+  const location = useLocation();
+
   return (
-    <Box sx={{ left: 0, right: 0 }}>
+    <Box sx={{ left: 0, right: 0, bgcolor: location.pathname === '/' ? 'primary.main' : '', color: location.pathname === '/' ? 'white' : '' }}>
       <Container maxWidth='xl' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Stack>
           <Typography variant='caption' mb={1}>

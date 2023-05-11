@@ -23,7 +23,7 @@ const ExpansionDetail = () => {
   return (
     <>
       { expansion ? (
-        <> 
+        <Box sx={{ flexDirection: 'column' }} className='container'> 
           <Stack direction='row' spacing={2} alignItems='baseline'>
             <PageTitle title={expansion.name} />
             <Typography variant='body1'>Released: {new Date(expansion.release_date).toLocaleDateString()}</Typography>
@@ -43,7 +43,7 @@ const ExpansionDetail = () => {
               ))
             }
           </Grid>
-        </>
+        </Box>
       ) : (
         <NotFound />
       )}
