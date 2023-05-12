@@ -4,7 +4,6 @@ const navbarStyle = {
   },
   '&.active': {
     color: 'secondary.main',
-    fontWeight: 'bold' 
   },
   '&:hover': {
     color: 'gray'

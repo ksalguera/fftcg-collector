@@ -3,7 +3,6 @@ const navbarStyle = {
     color: 'inherit'
   },
   '&.active': {
-    color: 'pink',
     fontWeight: 'bold' 
   },
   mx: 2,
