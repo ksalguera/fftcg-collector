@@ -22,8 +22,7 @@ const Card = ({ name, serial, image, variants }) => {
   return (
     <Box>
       <Stack direction='row' justifyContent='space-between' mb={1}>
-        <Link component={RouterLink} to='/' color='secondary.main'>{name}</Link>
-        {/* <Typography variant='h5'>{name}</Typography> */}
+        <Link component={RouterLink} to='/' color='secondary.dark'>{name}</Link>
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
       <img src={image} style={{ maxWidth: '100%', height: 'auto' }} />

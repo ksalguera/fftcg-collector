@@ -10,7 +10,10 @@ export const themeSettings = mode => {
       ...(mode === 'light'
         ? {
           primary: { main: grey[900] },
-          secondary: { main: '#eeff41' },
+          secondary: { 
+            dark: '#9e9d24',
+            main: '#eeff41' 
+          },
           neutral: {
             dark: grey[700],
             main: grey[500],
