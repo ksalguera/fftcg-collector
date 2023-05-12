@@ -1,15 +1,17 @@
+import { useContext } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { AppContext } from '../../contexts/AppContext';
 
 const LogoNavMobile = () => {
+  const { user } = useContext(AppContext);
   return (
     <>
-      {/* Add Logo Here */}
       <Typography
         variant='h5'
         noWrap
         component={RouterLink}
-        to='/'
+        to={!user ? '/' : '/collection-dashboard'}
         sx={{
           mr: 2,
           display: { xs: 'flex', md: 'none' },

@@ -1,10 +1,13 @@
+import { useContext } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { AppContext } from '../../contexts/AppContext';
 import logo from '../../assets/Logo.png'
 
 const LogoNav = () => {
   const showImage = useMediaQuery('(min-width:960px)'); 
+  const { user } = useContext(AppContext);
 
   return (
     <>
@@ -13,7 +16,7 @@ const LogoNav = () => {
         variant='h4'
         noWrap
         component={RouterLink}
-        to='/'
+        to={!user ? '/' : '/collection-dashboard'}
         ml={2}
         sx={{
           mr: 2,
