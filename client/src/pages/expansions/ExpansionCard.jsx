@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Card, CardContent, CardMedia, LinearProgress, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, LinearProgress, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/ManageSearch';
 
 const ExpansionCard = ({ name, releaseDate, image }) => {

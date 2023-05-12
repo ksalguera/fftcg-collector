@@ -12,7 +12,7 @@ const Home = () => {
             Track Your Final Fantasy TCG Collection and Find Additional Resources
           </Typography>
         </Box>
-        <img src={image} width='60%' />
+        <img src={image} alt='final fantasy cards' width='60%' />
       </Stack>
     </Box>
   )

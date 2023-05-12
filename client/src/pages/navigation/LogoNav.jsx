@@ -8,7 +8,7 @@ const LogoNav = () => {
 
   return (
     <>
-      {showImage && <img src={logo} height='30px' />}
+      {showImage && <img src={logo} alt='logo' height='30px' />}
       <Typography
         variant='h4'
         noWrap
@@ -28,7 +28,6 @@ const LogoNav = () => {
         FFTCG COLLECTOR
       </Typography>
     </>
-
   )
 }
 
