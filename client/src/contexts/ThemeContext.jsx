@@ -1,4 +1,5 @@
-import { createContext, useState, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme } from '@mui/material/styles';
 import { indigo, green, grey } from '@mui/material/colors';
 
@@ -9,7 +10,7 @@ export const themeSettings = mode => {
       ...(mode === 'light'
         ? {
           primary: { main: grey[900] },
-          secondary: { main: indigo[900] },
+          secondary: { main: '#eeff41' },
           neutral: {
             dark: grey[700],
             main: grey[500],
@@ -40,7 +41,6 @@ export const themeSettings = mode => {
   }
 }
 
-
 // creates colorMode context            
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -48,13 +48,13 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 //  sets, updates, and exports light/dark mode state
 
 export const useMode = () => {
-  const [mode, setMode] = useState('light');
-  
-  const colorMode = useMemo(() => ({
-    toggleColorMode: () => setMode(prevMode => prevMode === 'dark' ? 'light' : 'dark'),
-  }), []);
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const theme = useMemo(
+    () =>
+      createTheme(themeSettings(prefersDarkMode ? 'dark' : 'light')),
+    [prefersDarkMode],
+  );
 
-  return [theme, colorMode];
+  return [theme];
 }

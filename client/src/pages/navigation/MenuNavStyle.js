@@ -3,7 +3,7 @@ const navbarStyle = {
     color: 'white'
   },
   '&.active': {
-    color: 'pink',
+    color: 'secondary.main',
     fontWeight: 'bold' 
   },
   '&:hover': {

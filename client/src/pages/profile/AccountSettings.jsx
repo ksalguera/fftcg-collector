@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
 import { Alert, Box, Button, CircularProgress, FormControl, TextField, Typography } from '@mui/material';
+import { AppContext } from '../../contexts/AppContext';
 import PasswordForm from './PasswordForm';
 import DeleteAccount from './DeleteAccount';
 
@@ -55,14 +55,14 @@ const AccountSettings = () => {
       console.error(error);
     }
   }
-
+ 
   return (
     <> 
       { !user ? <CircularProgress />
       :
       <Box sx={{ width: '100%', flexDirection: 'column' }} className='container'>
+        <Typography variant='h2' mb={2}>Settings</Typography>
         <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-          <Typography variant='h2' mb={2}>Settings</Typography>
           <Typography variant='h3' mb={2}>Account Information</Typography>
           <FormControl fullWidth sx={{ mb: 2 }}>
             <Typography variant='subtitle1' mb={1}>Display Name</Typography>
@@ -96,7 +96,6 @@ const AccountSettings = () => {
       </Box>
       }
     </>
-
   )
 }
 
