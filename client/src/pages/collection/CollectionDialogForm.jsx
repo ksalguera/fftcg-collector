@@ -1,15 +1,11 @@
-import { useContext } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Checkbox, FormControl, FormControlLabel, FormGroup, Stack } from '@mui/material';
-import { AppContext } from '../../contexts/AppContext';
 
-const CollectionDialogForm = ({ open, onHandleDialogClose, onConfirmation, variants }) => {
-  const { user } = useContext(AppContext);
-
+const CollectionDialogForm = ({ open, onHandleDialogClose, onHandleEditCollection, onSaveCollection, variants, collection }) => {
   return (
     <Dialog open={open} onClose={onHandleDialogClose}>
       <DialogTitle variant='h4'>Add to Collection</DialogTitle>
@@ -24,13 +20,12 @@ const CollectionDialogForm = ({ open, onHandleDialogClose, onConfirmation, varia
                   label={variant.name} 
                   control={
                     <Checkbox
-                      checked={user ? true : false} 
+                      checked={collection.includes(variant.name) ? true : false} 
                       value={variant.name} 
-                      name={variant.name} 
+                      name={variant.name}
+                      onChange={onHandleEditCollection}
                     />
-                  } 
-                />
-              )
+              }/>)
             })}
           </FormGroup>
         </FormControl>
@@ -38,7 +33,7 @@ const CollectionDialogForm = ({ open, onHandleDialogClose, onConfirmation, varia
       </DialogContent>
       <DialogActions>
         <Button onClick={onHandleDialogClose}>Cancel</Button>
-        <Button onClick={onConfirmation} autoFocus>Save</Button>
+        <Button onClick={onSaveCollection} autoFocus>Save</Button>
       </DialogActions>
     </Dialog>
   )

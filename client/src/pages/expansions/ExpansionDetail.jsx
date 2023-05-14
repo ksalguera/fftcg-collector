@@ -34,6 +34,7 @@ const ExpansionDetail = () => {
               expansion.cards?.map(card => (
                 <Grid key={card.name} sm={2}> 
                   <Card
+                    id={card.id}
                     name={card.name}
                     serial={card.serial}
                     image={card.image_url}

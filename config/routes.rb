@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :profiles, only: [:update]
   resources :users, only: [:show, :create, :update, :destroy]
 
+  post '/update-collection', to: 'collections#update_collection'
+
   get '/account', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
