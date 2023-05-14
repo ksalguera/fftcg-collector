@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :collections
   resources :cards
   resources :expansions
   resources :profiles, only: [:update]
   resources :users, only: [:show, :create, :update, :destroy]
-
+  
+  get '/collections', to: 'collections#index'
+  get '/collection-stats', to: 'collections#collection_statistics'
   post '/update-collection', to: 'collections#update_collection'
 
   get '/account', to: 'users#show'
