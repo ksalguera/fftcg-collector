@@ -14,7 +14,7 @@ const MenuNav = () => {
       { user && <Link component={RouterLink} underline='none' sx={navbarStyle} to='/collection-dashboard'>Collection</Link> }
       <Link component={RouterLink} underline='none' sx={navbarStyle} to='/browse-sets'>Sets</Link>
       <Link component={RouterLink} underline='none' sx={navbarStyle} to='/browse-cards'>Cards</Link>  
-      <Link component={RouterLink} underline='none' sx={navbarStyle} to='/'>Resources</Link>
+      <Link component={RouterLink} underline='none' sx={navbarStyle} to='/resources'>Resources</Link>
     </Box>
   )
 }

@@ -59,7 +59,7 @@ const MenuNavMobile = ({ anchorElNav, onHandleOpenNavMenu, onHandleCloseNavMenu 
           <Link component={RouterLink} underline='none' sx={navbarStyle} to='/browse-cards'>Cards</Link>
         </MenuItem>
         <MenuItem onClick={onHandleCloseNavMenu}>
-          <Link component={RouterLink} underline='none' sx={navbarStyle} to='/'>Resources</Link>
+          <Link component={RouterLink} underline='none' sx={navbarStyle} to='/resources'>Resources</Link>
         </MenuItem>
       </Menu>
     </Box> 

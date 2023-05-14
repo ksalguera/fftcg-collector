@@ -20,6 +20,7 @@ import Footer from './pages/resources/Footer';
 import ExpansionDetail from './pages/expansions/ExpansionDetail';
 import AdminRoute from './components/AdminRoute';
 import NotFound from './pages/resources/NotFound';
+import Resources from './pages/resources/Resources';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -35,6 +36,7 @@ const App = () => {
               <Route path='/browse-sets' element={<ExpansionList />} />
               <Route path='/browse-sets/:name' element={<ExpansionDetail />} />
               <Route path='/browse-cards' element={<CardList />} />
+              <Route path='/resources' element={<Resources />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />
               <Route element={<PrivateRoutes />}>
