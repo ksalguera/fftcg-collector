@@ -7,12 +7,12 @@ import CollectionDialogForm from '../pages/collection/CollectionDialogForm';
 
 const Card = ({ name, serial, image, variants }) => {
   const { user } = useContext(AppContext);
-  const hasNormalVariant = variants && variants.some(variant => variant.name === 'normal');
-  const hasNormalFoilVariant = variants && variants.some(variant => variant.name === 'normal_foil');
-  const hasSpecialVariant = variants && variants.some(variant => variant.name === 'special');
-  const hasSpecialFoilVariant = variants && variants.some(variant => variant.name === 'special_foil');
-  const hasFullArtVariant = variants && variants.some(variant => variant.name === 'full_art');
-  const hasFullArtFoilVariant = variants && variants.some(variant => variant.name === 'full_art_foil');
+  const hasNormalVariant = variants && variants.some(variant => variant.name === 'Normal');
+  const hasNormalFoilVariant = variants && variants.some(variant => variant.name === 'Normal Foil');
+  const hasSpecialVariant = variants && variants.some(variant => variant.name === 'Special');
+  const hasSpecialFoilVariant = variants && variants.some(variant => variant.name === 'Special Foil');
+  const hasFullArtVariant = variants && variants.some(variant => variant.name === 'Full Art');
+  const hasFullArtFoilVariant = variants && variants.some(variant => variant.name === 'Full Art Foil');
   const N = hasNormalVariant ? 'N' : null;
   const NF = hasNormalFoilVariant ? 'F' : null;
   const S = hasSpecialVariant ? 'S' : null;

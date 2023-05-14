@@ -8,27 +8,27 @@ const AdminCardVariants = ({ variants, onEditVariants }) => {
         <FormGroup>
           <FormControlLabel
             label='Normal'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('normal')} onChange={onEditVariants} value={1} name='normal' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Normal')} onChange={onEditVariants} value={1} name='normal' /> }
           />
           <FormControlLabel
             label='Normal (Foil)'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('normal_foil') ? true : false} onChange={onEditVariants} value={2} name='normal_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Normal Foil') ? true : false} onChange={onEditVariants} value={2} name='normal_foil' /> }
           />
           <FormControlLabel
             label='Special'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('special') ? true : false} onChange={onEditVariants} value={3} name='special' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Special') ? true : false} onChange={onEditVariants} value={3} name='special' /> }
           />
           <FormControlLabel
             label='Special (Foil)'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('special_foil') ? true : false} onChange={onEditVariants} value={4} name='special_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Special Foil') ? true : false} onChange={onEditVariants} value={4} name='special_foil' /> }
           />
           <FormControlLabel
             label='Full Art'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('full_art') ? true : false} onChange={onEditVariants} value={5} name='full_art' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Full Art') ? true : false} onChange={onEditVariants} value={5} name='full_art' /> }
           />
           <FormControlLabel
             label='Full Art (Foil)'
-            control={ <Checkbox checked={variants?.length > 0 && variants.includes('full_art_foil') ? true : false} onChange={onEditVariants} value={6} name='full_art_foil' /> }
+            control={ <Checkbox checked={variants?.length > 0 && variants.includes('Full Art Foil') ? true : false} onChange={onEditVariants} value={6} name='full_art_foil' /> }
           />
         </FormGroup>
       </FormControl>
