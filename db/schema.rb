@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_022410) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_153541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_022410) do
     t.index ["expansion_id"], name: "index_cards_on_expansion_id"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "variant"
+    t.bigint "profile_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_collections_on_card_id"
+    t.index ["profile_id"], name: "index_collections_on_profile_id"
+  end
+
   create_table "expansions", force: :cascade do |t|
     t.string "name"
     t.date "release_date"
@@ -102,5 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_022410) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cards", "expansions"
+  add_foreign_key "collections", "cards"
+  add_foreign_key "collections", "profiles"
   add_foreign_key "profiles", "users"
 end
