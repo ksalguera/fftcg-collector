@@ -37,7 +37,6 @@ const Card = ({ name, serial, image, variants }) => {
         open={openDialog} 
         onHandleDialogClose={() => setOpenDialog(false)}
         onConfirmation={() => console.log(variants)}
-        title='Add to Collection'
         variants={variants}
       />
     </Box>
