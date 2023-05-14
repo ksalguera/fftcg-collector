@@ -40,7 +40,7 @@ const SignUpForm = () => {
         setUser(data)
         setErrors(null)
         setFormData(initialState);
-        navigate('/')
+        data.is_admin ? navigate('/admin-dashboard') : navigate('/collection-dashboard')
       }
     } catch (error) {
       console.error(error);
