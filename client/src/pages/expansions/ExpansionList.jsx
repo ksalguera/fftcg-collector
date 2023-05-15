@@ -20,6 +20,7 @@ const ExpansionList = () => {
                 name={expansion.name}
                 releaseDate={expansion.release_date}
                 image={expansion.image_url}
+                stats={expansion.percent_collected}
               />
             </Grid>
           ))
