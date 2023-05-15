@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PageTitle from '../../../components/PageTitle';
 import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
@@ -19,7 +20,13 @@ const AdminExpansions = () => {
   const { expansions, setExpansions } = useContext(AppContext);
   const [checked, setChecked] = useState(false);
   const [selectionModel, setSelectionModel] = useState(null);
+  const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    const expansion = expansions.find(expansion => expansion.id === selectionModel[0]);
+    navigate(`/browse-sets/${expansion.name}`)
+  }
+  
   const handleDelete = async () => {
     const res = await fetch(`/expansions/${selectionModel[0]}`, { method: 'DELETE' });
     if (res.ok) { 
@@ -54,7 +61,7 @@ const AdminExpansions = () => {
       </Box>
       <Stack direction='row' justifyContent='space-between'>
         <Box>
-         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={() => console.log(selectionModel[0])}>View Page</Button>
+         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={handleNavigate}>View Page</Button>
          <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={() => console.log(selectionModel)}>Edit</Button>
         </Box>
         <IconButton disabled={!selectionModel || selectionModel.length === 0} color='error' onClick={handleDelete} >
