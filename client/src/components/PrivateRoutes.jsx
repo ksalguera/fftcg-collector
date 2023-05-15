@@ -11,7 +11,7 @@ const PrivateRoutes = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [])
