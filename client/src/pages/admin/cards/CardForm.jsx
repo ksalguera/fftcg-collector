@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { Alert, Box, Button, FormControl, Divider, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import CardFormTextfield from './CardFormTextfield';
 import { AppContext } from '../../../contexts/AppContext';
+import ImageUpload from '../../../components/ImageUpload';
 
 const CardForm = () => {
   const initialState = {
@@ -21,7 +22,7 @@ const CardForm = () => {
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
-  const handleImageUpload = e => setImage(e.target.files[0]);
+  const handleSetImage = e => setImage(e.target.files[0]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -65,7 +66,7 @@ const CardForm = () => {
   return (
     <Box sx={{ maxWidth: 'inherit' }}>
       <Divider orientation='horizontal' sx={{ my: 2, width: '100%' }} variant='fullWidth' />
-      <Box component='form' onSubmit={handleSubmit} sx={{ maxWidth: '90%'}}>
+      <Box component='form' onSubmit={handleSubmit} sx={{ maxWidth: '100%'}}>
         <Typography variant='h4' mb={2}>Add New Card</Typography>
         <Stack direction='row' alignItems='center'>
           <FormControl fullWidth sx={{ mb: 2, mx: 2, width: '25%' }}>
@@ -111,11 +112,8 @@ const CardForm = () => {
             value={formData.serial}
             onHandleInputChange={handleInputChange}
           />
-          <Button variant='outlined' component='label'>
-            Upload Image
-            <input hidden accept='image/*' multiple type='file' onChange={handleImageUpload} />
-          </Button> 
-          {image && <Typography variant='caption' ml={2}>{image.name}</Typography>}
+          <ImageUpload image={image} onSetImage={handleSetImage} />
+          <Typography variant='caption' ml={2}>{image ? image.name : 'No Image Selected'}</Typography>
         </Stack>
         <Stack direction='row' alignItems='center'>
           <CardFormTextfield
@@ -126,14 +124,14 @@ const CardForm = () => {
             onHandleInputChange={handleInputChange}
           />
           <CardFormTextfield 
-            width='25%'
+            width='15%'
             label='Cost' 
             name='cost' 
             value={formData.cost}
             onHandleInputChange={handleInputChange}
           />
           <CardFormTextfield
-            width='25%'
+            width='20%'
             label='Power' 
             name='power' 
             value={formData.power}

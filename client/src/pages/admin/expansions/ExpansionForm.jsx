@@ -3,9 +3,9 @@ import { Alert, Box, Button, FormControl, Divider, Stack, TextField, Typography 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateField } from '@mui/x-date-pickers/DateField';
-import CameraIcon from '@mui/icons-material/CameraAlt';
 import ExpansionFormTextfield from './ExpansionFormTextfield';
 import { AppContext } from '../../../contexts/AppContext';
+import ImageUpload from '../../../components/ImageUpload';
 
 const ExpansionForm = () => {
   const initialState = {
@@ -25,6 +25,8 @@ const ExpansionForm = () => {
   const [errors, setErrors] = useState(null);
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+  const handleSetImage = e => setImage(e.target.files[0]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -95,10 +97,7 @@ const ExpansionForm = () => {
               />
             </LocalizationProvider>
           </FormControl>
-          <Button variant='outlined' component='label' endIcon={<CameraIcon />}>
-            Upload
-            <input hidden key={image} accept='image/*' multiple type='file' onChange={e => setImage(e.target.files[0])} />
-          </Button> 
+          <ImageUpload image={image} onSetImage={handleSetImage} />
           <Typography variant='caption' ml={2}>{image ? image.name : 'No Image Selected'}</Typography>
         </Stack>
         <Stack direction='row' alignItems='center'>
