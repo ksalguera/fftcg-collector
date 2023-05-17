@@ -10,7 +10,7 @@ const ExpansionList = () => {
   const { expansions } = useContext(AppContext);
 
   return (
-    <Box sx={{ flexDirection: 'column' }}className='container'>
+    <Box sx={{ flexDirection: 'column' }} className='container'>
       <PageTitle title='Browse Sets' />
       <Grid container spacing={2}> 
         { !expansions ? <CircularProgress /> :
