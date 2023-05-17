@@ -18,7 +18,7 @@ const AppContextProvider = ({ children }) => {
       setExpansions(json);
     };
     fetchExpansions().catch(error => error.message);
-  }, [user]);
+  }, [user, cards]);
 
   useEffect(() => {
     const fetchCards = async () => {
