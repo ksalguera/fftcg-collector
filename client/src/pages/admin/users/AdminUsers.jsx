@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import PageTitle from '../../../components/PageTitle';
 import { DataGrid } from '@mui/x-data-grid';
 import Alert from '@mui/material/Alert';
@@ -7,21 +7,12 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import columns from './UserColumns';
+import { AppContext } from '../../../contexts/AppContext';
 
 const AdminUsers = () => {
-  const [users, setUsers] = useState([]);
+  const { users, setUsers } = useContext(AppContext)
   const [selectionModel, setSelectionModel] = useState(null);
   const [errors, setErrors] = useState(null);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const res = await fetch('/all-users');
-      if (!res.ok) throw new Error(res.statusText);
-      const json = await res.json();
-      setUsers(json);
-    };
-    fetchUsers().catch(error => error.message);
-  }, []);
   
   const handleDelete = async () => {
     const res = await fetch(`/admin/users/${selectionModel[0]}`, { method: 'DELETE' });

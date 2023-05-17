@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import VerticalTabPanel from './VerticalTabPanel';
 import AdminTabsMenu from './AdminTabsMenu';
-import AdminDashboardSummary from './AdminDashboardSummary';
+import AdminDashboardSummary from './dashboard/AdminDashboardSummary';
 import AdminExpansions from './expansions/AdminExpansions';
 import AdminCards from './cards/AdminCards';
 import AdminUsers from './users/AdminUsers';

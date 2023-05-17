@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const AppContext = createContext();
 
@@ -6,6 +7,8 @@ const AppContextProvider = ({ children }) => {
   const [expansions, setExpansions] = useState(null);
   const [cards, setCards] = useState(null);
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchExpansions = async () => {
@@ -36,9 +39,22 @@ const AppContextProvider = ({ children }) => {
     };
     fetchUser().catch(error => error.message);
   }, []);
+  
+  // fetch all users on admin-dashboard only
+  useEffect(() => {
+    if (location.pathname === '/admin-dashboard') {
+      const fetchUsers = async () => {
+        const res = await fetch('/all-users');
+        if (!res.ok) throw new Error(res.statusText);
+        const json = await res.json();
+        setUsers(json);
+      };
+      fetchUsers().catch(error => error.message);
+    }
+  }, [location.pathname]);
 
   return (
-    <AppContext.Provider value={{ expansions, setExpansions, cards, setCards, user, setUser }}>
+    <AppContext.Provider value={{ expansions, setExpansions, cards, setCards, user, setUser, users, setUsers }}>
       {children}
     </AppContext.Provider>
   );
