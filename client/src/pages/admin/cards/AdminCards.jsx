@@ -20,6 +20,16 @@ const AdminCards = () => {
   const [checked, setChecked] = useState(false);
   const [selectionModel, setSelectionModel] = useState(null);
   const navigate = useNavigate();
+  
+  const handleNavigate = () => {
+    const card = cards.find(card => card.id === selectionModel[0]);
+    navigate(`/browse-cards/${card.serial}`)
+  }
+  
+  const handleCardEdit = () => {
+    const card = cards.find(card => card.id === selectionModel[0])
+    navigate(`/cards/${card.serial}/edit`)
+  }
 
   const handleDelete = async () => {
     const res = await fetch(`/cards/${selectionModel[0]}`, { method: 'DELETE' });
@@ -29,13 +39,7 @@ const AdminCards = () => {
       setSelectionModel(null)
     }
   }
-
-  const handleCardEdit = () => {
-    const card = cards.find(card => card.id === selectionModel[0])
-    navigate(`/cards/${card.serial}/edit`)
-  }
-
-
+  
   return (
     <>
       <Stack direction='row' justifyContent='space-between'>
@@ -61,7 +65,7 @@ const AdminCards = () => {
       </Box>
       <Stack direction='row' justifyContent='space-between'>
         <Box>
-         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={() => console.log(selectionModel[0])}>View Page</Button>
+         <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} sx={{ mr: 2 }} startIcon={<PageviewIcon />} onClick={handleNavigate}>View Page</Button>
          <Button variant='text' disabled={!selectionModel || selectionModel.length === 0} startIcon={<EditIcon />} onClick={handleCardEdit}>Edit</Button>
         </Box>
         <IconButton disabled={!selectionModel || selectionModel.length === 0} color='error' onClick={handleDelete} >
