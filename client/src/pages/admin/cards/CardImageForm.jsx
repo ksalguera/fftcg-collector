@@ -6,7 +6,6 @@ import { AppContext } from '../../../contexts/AppContext';
 const CardImageForm = ({ image, serial, onImageChange }) => {
   const { cards, setCards } = useContext(AppContext);
   const [newImage, setNewImage] = useState(null);
-  const [currentImage, setCurrentImage] = useState(null);
 
   const handleSubmit = async () => {
     const form = new FormData();
