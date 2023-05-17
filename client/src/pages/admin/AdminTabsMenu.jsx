@@ -13,7 +13,7 @@ const VerticalTabsMenu = ({ value, handleChange }) => {
   return (
     <Tabs
       orientation='vertical'
-      variant="scrollable"
+      variant='scrollable'
       value={value}
       onChange={handleChange}
       sx={{ borderRight: 1, borderColor: 'divider' }}
@@ -29,6 +29,6 @@ const VerticalTabsMenu = ({ value, handleChange }) => {
 VerticalTabsMenu.propTypes = {
   value: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
-};
+}
 
 export default VerticalTabsMenu;

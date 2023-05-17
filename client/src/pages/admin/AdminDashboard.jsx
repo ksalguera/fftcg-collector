@@ -5,13 +5,13 @@ import AdminTabsMenu from './AdminTabsMenu';
 import AdminDashboardSummary from './AdminDashboardSummary';
 import AdminExpansions from './expansions/AdminExpansions';
 import AdminCards from './cards/AdminCards';
+import AdminUsers from './users/AdminUsers';
 
 const AdminDashboard = () => {
   const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+ 
+  // MUI Tabs requires an event object to be passed first. "_" is required
+  const handleChange = (_, newValue) => setValue(newValue);
 
   return (
     <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }} className='container'>
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
         <AdminDashboardSummary />
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={1}>
-        Item Two
+        <AdminUsers />
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={2}>
         <AdminExpansions />
@@ -29,7 +29,7 @@ const AdminDashboard = () => {
         <AdminCards />
       </VerticalTabPanel>
     </Box>
-  );
+  )
 }
 
 export default AdminDashboard;
