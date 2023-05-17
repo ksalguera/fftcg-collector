@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
 const VerticalTabPanel = ({ children, value, index }) => {
   return (
@@ -9,9 +8,10 @@ const VerticalTabPanel = ({ children, value, index }) => {
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
+      style={{ width: '100% '}}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 3, width: '100%' }}>
           {children}
         </Box>
       )}

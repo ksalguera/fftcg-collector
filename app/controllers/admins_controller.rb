@@ -1,11 +1,16 @@
 class AdminsController < ApplicationController
   skip_before_action :authorize_user
+
+  # GET /all-users
+  def all_users
+    render json: User.all
+  end
   
   # PATCH /admin/users/:id **Admin users can only update a user's role**
   def update_user
     user = find_user
     if user == @current_user
-      render json: { errors: 'Current user role cannot be updated' }, status: :unprocessable_entity
+      render json: { errors: ['Current user role cannot be updated'] }, status: :unprocessable_entity
     else
       user.update!(user_params)
       render json: user
@@ -16,7 +21,7 @@ class AdminsController < ApplicationController
   def destroy_user
     user = find_user
     if user == @current_user
-      render json: { errors: 'Current user cannot be deleted' }, status: :unprocessable_entity
+      render json: { errors: ['Current user cannot be deleted'] }, status: :unprocessable_entity
     else
       user.destroy
       head :no_content

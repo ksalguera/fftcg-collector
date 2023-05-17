@@ -14,9 +14,8 @@ Rails.application.routes.draw do
 
   patch '/change-password', to: 'users#update_password'
 
-  namespace :admins do
-    delete '/users/:id', to: 'admins#destroy_user'
-  end
+  get '/all-users', to: 'admins#all_users'
+  delete '/admin/users/:id', to: 'admins#destroy_user'
 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
-import VerticalTabPanel from '../../components/VerticalTabPanel';
+import VerticalTabPanel from './VerticalTabPanel';
 import AdminTabsMenu from './AdminTabsMenu';
 import AdminDashboardSummary from './AdminDashboardSummary';
 import AdminExpansions from './expansions/AdminExpansions';
@@ -14,12 +14,12 @@ const AdminDashboard = () => {
   const handleChange = (_, newValue) => setValue(newValue);
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }} className='container'>
+    <Box sx={{ bgcolor: 'background.paper', width: '100%' }} className='container'>
       <AdminTabsMenu value={value} handleChange={handleChange} />
       <VerticalTabPanel value={value} index={0}>
         <AdminDashboardSummary />
       </VerticalTabPanel>
-      <VerticalTabPanel value={value} index={1}>
+      <VerticalTabPanel value={value} index={1}> 
         <AdminUsers />
       </VerticalTabPanel>
       <VerticalTabPanel value={value} index={2}>

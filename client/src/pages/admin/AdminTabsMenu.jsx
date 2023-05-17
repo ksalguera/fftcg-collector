@@ -16,7 +16,7 @@ const VerticalTabsMenu = ({ value, handleChange }) => {
       variant='scrollable'
       value={value}
       onChange={handleChange}
-      sx={{ borderRight: 1, borderColor: 'divider' }}
+      sx={{ borderRight: 1, borderColor: 'divider', minWidth: '15%' }}
     >
       <Tab label='Dashboard' {...a11yProps(0)} />
       <Tab label='Manage Users' {...a11yProps(1)} />
