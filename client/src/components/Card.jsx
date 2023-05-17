@@ -67,7 +67,7 @@ const Card = ({ id, name, serial, image, variants }) => {
   return (
     <Box>
       <Stack direction='row' justifyContent='space-between' mb={1}>
-        <Link component={RouterLink} to='/' color='secondary.dark'>{name}</Link>
+        <Link component={RouterLink} to={`/browse-cards/${serial}`} color='secondary.dark'>{name}</Link>
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
       <img src={image} style={{ maxWidth: '100%', height: 'auto' }} />
