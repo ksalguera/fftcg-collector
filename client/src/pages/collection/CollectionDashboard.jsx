@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
+import { useState, useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
-import Paper from '@mui/material/Paper';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Stack from '@mui/material/Stack';
+import { AppContext } from '../../contexts/AppContext';
 import PageTitle from '../../components/PageTitle';
+import CollectionPaper from './CollectionPaper';
+import columns from './CollectionColumns';
 
 const CollectionDashboard = () => {
+  const { user } = useContext(AppContext);
   const [collection, setCollection] = useState([]);
+  const [selectionModel, setSelectionModel] = useState(null);
 
   useEffect(() => {
     const fetchCollection = async () => {
@@ -18,29 +22,32 @@ const CollectionDashboard = () => {
     };
     fetchCollection().catch(error => error.message);
   }, []);
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-
+ 
   return (
-    <Box className='container'>
-      <Stack sx={{ width: '100%' }}>
-      <PageTitle title='Collection Dashboard' />
-        <Grid container spacing={2}>
-          <Grid>
-            <Item> Total Collected Cards {collection.total_collected}</Item>
+    <Box sx={{ width: '100%' }} className='container'>
+      <Stack spacing={2} sx={{ width: '100%' }}>
+        <PageTitle title='Collection Dashboard' />
+          <Grid container spacing={2}>
+            <Grid xs={12} md={6}>
+              <CollectionPaper title='Total Collected Cards' data={collection.total} />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <CollectionPaper title='Total Full Art Foil Cards' data={collection.total_full_art_foil} />
+            </Grid>
           </Grid>
-          <Grid>
-            <Item>Test</Item>
-          </Grid>
-        </Grid>
+          <Box mb={2} sx={{ width: '100%', height: '80%' }}>
+            <DataGrid
+              slots={{ toolbar: GridToolbar }}
+              autoPageSize
+              rows={user.profile.collections} 
+              columns={columns}
+              onRowSelectionModelChange={(newSelectionModel) => {
+                setSelectionModel(newSelectionModel);
+              }}
+              selectionModel={selectionModel}
+            />
+        </Box>
       </Stack>
-
     </Box>
   )
 }

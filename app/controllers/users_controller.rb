@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   # GET /account
   def show
-    render json: current_user, include: ['profile.collections', 'profile.collections.card']
+    render json: current_user, include: ['profile.collections', 'profile.collections.card', 'profile.collections.card.expansion']
   end
   
   # POST /users

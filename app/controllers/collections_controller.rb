@@ -15,8 +15,8 @@ class CollectionsController < ApplicationController
     expansion_data = Collection.expansion_stats(collection)
 
     render json: { 
-      total_collected: total, 
-      total_full_art_foil_collected: full_art_foil,
+      total: total, 
+      total_full_art_foil: full_art_foil,
       expansion_data: expansion_data
     }, status: :ok
   end

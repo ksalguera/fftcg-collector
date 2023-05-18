@@ -16,8 +16,8 @@ class Collection < ApplicationRecord
       total_cards = total_cards(expansion)
       
       expansion_data << {
-        expansion_id: expansion.id,
-        expansion_name: expansion.name,
+        id: expansion.id,
+        name: expansion.name,
         total_cards: total_cards,
         profile_total_cards: expansion_cards_count,
         percent_collected: ((expansion_cards_count / total_cards.to_f)*100).round(2)
