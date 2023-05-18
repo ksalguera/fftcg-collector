@@ -22,7 +22,7 @@ const CollectionDashboard = () => {
     };
     fetchCollection().catch(error => error.message);
   }, []);
- 
+   console.log(user)
   return (
     <Box sx={{ width: '100%' }} className='container'>
       <Stack sx={{ width: '100%' }}>
@@ -46,7 +46,7 @@ const CollectionDashboard = () => {
             }}
             selectionModel={selectionModel}
           />
-      </Box>
+        </Box>
       </Stack>
     </Box>
   )

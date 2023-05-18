@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: user
+      render json: user, include: ['profile.collections', 'profile.collections.card', 'profile.collections.card.expansion']
     else
       render json: { errors: 'Incorrect Email or Password' }, status: :unauthorized
     end
