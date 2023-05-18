@@ -10,15 +10,17 @@ const Home = () => {
 
   return (
     <Box sx={{ bgcolor: 'primary.main', height: '100vh'}}>
-      <Stack direction='row' px={8} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 'inherit' }}>
-        <Box sx={{ width: '40%' }}>
-          <Typography variant='h1' mb={2} sx={{ color: 'white' }}>
-            Track Your Final Fantasy TCG Collection and Find Additional Resources
-          </Typography>
-          <Button variant='outlined' color='secondary' onClick={() => navigate('/login')}>Login Now</Button>
-        </Box>
-        <img src={image} alt='final fantasy cards' width='60%' />
-      </Stack>
+      <Box className='container'>
+        <Stack direction='row' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 'inherit' }}>
+          <Box sx={{ width: '40%' }}>
+            <Typography variant='h1' mb={2} sx={{ color: 'white' }}>
+              Track Your Final Fantasy TCG Collection and Find Additional Resources
+            </Typography>
+            <Button variant='outlined' color='secondary' onClick={() => navigate('/login')}>Login Now</Button>
+          </Box>
+          <img src={image} alt='final fantasy cards' width='60%' />
+        </Stack>
+      </Box>
     </Box>
   )
 }
