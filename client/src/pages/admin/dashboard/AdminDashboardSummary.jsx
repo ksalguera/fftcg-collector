@@ -9,13 +9,13 @@ const AdminDashboardSummary = () => {
   return (
     <Grid container spacing={2} sx={{ width: '100%' }}>
       <Grid md={4}>
-        <AdminDashboardPaper title='Total Sets' data={expansions.length || ''} />
+        <AdminDashboardPaper title='Total Sets' data={expansions && expansions.length} />
       </Grid>
       <Grid md={4}>
-        <AdminDashboardPaper title='Total Cards' data={cards.length || ''} />
+        <AdminDashboardPaper title='Total Cards' data={cards && cards.length} />
       </Grid>
       <Grid md={4}>
-        <AdminDashboardPaper title='Total Users' data={users.length || ''} />
+        <AdminDashboardPaper title='Total Users' data={users && users.length} />
       </Grid>
     </Grid>
   )
