@@ -25,28 +25,28 @@ const CollectionDashboard = () => {
  
   return (
     <Box sx={{ width: '100%' }} className='container'>
-      <Stack spacing={2} sx={{ width: '100%' }}>
+      <Stack sx={{ width: '100%' }}>
         <PageTitle title='Collection Dashboard' />
-          <Grid container spacing={2}>
-            <Grid xs={12} md={6}>
-              <CollectionPaper title='Total Collected Cards' data={collection.total} />
-            </Grid>
-            <Grid xs={12} md={6}>
-              <CollectionPaper title='Total Full Art Foil Cards' data={collection.total_full_art_foil} />
-            </Grid>
+        <Grid container spacing={2} mb={2}>
+          <Grid xs={12} md={6}>
+            <CollectionPaper title='Total Collected Cards' data={collection.total} />
           </Grid>
-          <Box mb={2} sx={{ width: '100%', height: '80%' }}>
-            <DataGrid
-              slots={{ toolbar: GridToolbar }}
-              autoPageSize
-              rows={user.profile.collections} 
-              columns={columns}
-              onRowSelectionModelChange={(newSelectionModel) => {
-                setSelectionModel(newSelectionModel);
-              }}
-              selectionModel={selectionModel}
-            />
-        </Box>
+          <Grid xs={12} md={6}>
+            <CollectionPaper title='Total Full Art Foil Cards' data={collection.total_full_art_foil} />
+          </Grid>
+        </Grid>
+        <Box mb={2} sx={{ width: '100%', height: '80%' }}>
+          <DataGrid
+            slots={{ toolbar: GridToolbar }}
+            autoPageSize
+            rows={user.profile.collections} 
+            columns={columns}
+            onRowSelectionModelChange={(newSelectionModel) => {
+              setSelectionModel(newSelectionModel);
+            }}
+            selectionModel={selectionModel}
+          />
+      </Box>
       </Stack>
     </Box>
   )
