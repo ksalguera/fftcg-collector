@@ -30,6 +30,6 @@ class ExpansionsController < ApplicationController
   private
   
   def expansion_params
-    params.permit(:name, :release_date, :normal, :normal_foil, :special, :special_foil, :full_art, :full_art_foil, :image)
+    params.permit(:name, :release_date, :image)
   end
 end
