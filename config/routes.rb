@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :cards
-  resources :expansions
+  resources :expansions, except: [:update]
   resources :profiles, only: [:update]
   resources :users, only: [:show, :create, :update, :destroy]
   
