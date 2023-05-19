@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def update
     user = find_user
     user.update!(user_params_update)
-    render json: user
+    render json: user, include: ['profile.collections', 'profile.collections.card', 'profile.collections.card.expansion']
   end
 
   # DELETE /users/:id
