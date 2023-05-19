@@ -21,8 +21,8 @@ export const themeSettings = mode => {
           },
           background: { default: '#fcfcfc' }
         } : {
-          primary: { main: indigo[300] },
-          secondary: { main: green[500] },
+          primary: { main: grey[600] },
+          secondary: { main: '#eeff41' },
           neutral: {
             dark: grey[700],
             main: grey[500],

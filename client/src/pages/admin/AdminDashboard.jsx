@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   const handleChange = (_, newValue) => setValue(newValue);
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', width: '100%' }} className='container'>
+    <Box sx={{ width: '100%' }} className='container'>
       <AdminTabsMenu value={value} handleChange={handleChange} />
       <VerticalTabPanel value={value} index={0}>
         <AdminDashboardSummary />
