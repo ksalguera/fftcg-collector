@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     is_admin = (params[:email] == Rails.application.credentials.admin)
     user = User.create!(user_params.merge(is_admin: is_admin))
     session[:user_id] = user.id
-    render json: user
+    render json: user, include: ['profile.collections', 'profile.collections.card', 'profile.collections.card.expansion']
   end
 
   # PATCH /users/:id
