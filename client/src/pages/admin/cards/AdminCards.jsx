@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../../../components/PageTitle';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -52,6 +52,7 @@ const AdminCards = () => {
       { checked && <CardForm />}
       <Box mb={2} style={{ width: '100%' }}>
         <DataGrid
+          slots={{ toolbar: GridToolbar }}
           autoHeight
           pageSize={10}
           pageSizeOptions={[10, 25, 100]}
