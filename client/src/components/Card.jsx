@@ -57,7 +57,7 @@ const Card = ({ id, name, serial, image, variants }) => {
         console.log(errorData);
       } else {
         const data = await res.json();
-        setUser({...user, profile: {...user.profile, collections: data}})
+        setUser(data)
       }
     } catch (error) {
       console.error(error);

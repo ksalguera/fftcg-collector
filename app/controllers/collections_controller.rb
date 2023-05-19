@@ -34,7 +34,7 @@ class CollectionsController < ApplicationController
       collected_card = Collection.find_or_create_by(variant: variant, profile_id: profile_id, card_id: params[:card_id])
     end
 
-    render json: current_user.profile.collections, status: :ok
+    render json: current_user, include: ['profile.collections', 'profile.collections.card', 'profile.collections.card.expansion'], status: :ok
   end
 
   private

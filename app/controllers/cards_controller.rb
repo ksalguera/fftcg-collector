@@ -23,7 +23,7 @@ class CardsController < ApplicationController
   # POST /cards
   def create
     card = Card.create!(card_params)
-    render json: card
+    render json: card, include: [:expansion, :variants]
   end
 
   # PATCH /cards/:serial
