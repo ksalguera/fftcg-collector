@@ -48,7 +48,6 @@ const CardForm = () => {
       } else {
         const data = await res.json();
         setErrors(null)
-        console.log(data)
         setCards([...cards, data])
         setFormData(initialState)
         setImage(null)

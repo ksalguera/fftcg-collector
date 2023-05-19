@@ -89,7 +89,6 @@ const CardEditForm = () => {
         setCard(data)
         const updatedCards = cards.map(card => card.id === data.id ? data : card)
         setCards(updatedCards)
-        console.log(data)
       }
     } catch (error) {
       console.error(error);
