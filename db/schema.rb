@@ -76,13 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_153541) do
   create_table "expansions", force: :cascade do |t|
     t.string "name"
     t.date "release_date"
-    t.integer "total_cards"
-    t.integer "normal", default: 0
-    t.integer "normal_foil", default: 0
-    t.integer "special", default: 0
-    t.integer "special_foil", default: 0
-    t.integer "full_art", default: 0
-    t.integer "full_art_foil", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

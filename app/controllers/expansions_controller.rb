@@ -5,7 +5,7 @@ class ExpansionsController < ApplicationController
   
   # GET /expansions
   def index
-    render json: Expansion.all, include: [:image]
+    render json: Expansion.all, include: ['cards', 'cards.variants']
   end
   
   # GET /expansions/:name

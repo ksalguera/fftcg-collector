@@ -8,16 +8,12 @@ class ExpansionSerializer < ActiveModel::Serializer
       rails_blob_url(object.image, only_path: true)
     end
   end
-
-  def total_cards
-    object.normal + object.normal_foil + object.special + object.special_foil + object.full_art + object.full_art_foil
-  end
   
   def percent_collected
     if current_user 
       expansion_cards = current_user.profile.collections.joins(:card).where(cards: { expansion_id: object.id })
       expansion_cards_count = expansion_cards ? expansion_cards.count : 0
-      (expansion_cards_count / total_cards.to_f*100).round(2)
+      (expansion_cards_count / object.total_cards.to_f*100).round(2)
     else 
       return 0
     end

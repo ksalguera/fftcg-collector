@@ -8,18 +8,8 @@ import { AppContext } from '../../../contexts/AppContext';
 import ImageUpload from '../../../components/ImageUpload';
 
 const ExpansionForm = () => {
-  const initialState = {
-    name: '',
-    normal: '',
-    normal_foil: '',
-    special: '',
-    special_foil: '',
-    full_art: '',
-    full_art_foil: '',
-   }
-
   const { expansions, setExpansions } = useContext(AppContext);
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState({ name: '' });
   const [date, setDateValue] = useState(null);
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState(null);
@@ -34,12 +24,6 @@ const ExpansionForm = () => {
     const form = new FormData();
     form.append("[name]", formData.name);
     form.append("[release_date]", date ? date.toISOString().substr(0, 10) : '');
-    form.append("[normal]", formData.normal);
-    form.append("[normal_foil]", formData.normal_foil);
-    form.append("[special]", formData.special);
-    form.append("[special_foil]", formData.special_foil);
-    form.append("[full_art]", formData.full_art);
-    form.append("[full_art_foil]", formData.full_art_foil);
     form.append("[image]", image);
 
     try {
@@ -55,7 +39,7 @@ const ExpansionForm = () => {
         setErrors(null)
         setExpansions([...expansions, data])
         setDateValue(null)
-        setFormData(initialState)
+        setFormData({ name: '' })
         setImage(null)
       }
     } catch (error) {
@@ -64,7 +48,7 @@ const ExpansionForm = () => {
   }
 
   const handleClear = () => {
-    setFormData(initialState)
+    setFormData({ name: '' })
     setDateValue(null)
     setImage(null)
   }
@@ -99,44 +83,6 @@ const ExpansionForm = () => {
           </FormControl>
           <ImageUpload image={image} onSetImage={handleSetImage} />
           <Typography variant='caption' ml={2}>{image ? image.name : 'No Image Selected'}</Typography>
-        </Stack>
-        <Stack direction='row' alignItems='center'>
-          <ExpansionFormTextfield 
-            label='# Normal Cards' 
-            name='normal' 
-            value={formData.normal}
-            onHandleInputChange={handleInputChange}
-          />
-          <ExpansionFormTextfield 
-            label='# Normal (Foil)' 
-            name='normal_foil' 
-            value={formData.normal_foil}
-            onHandleInputChange={handleInputChange}
-          />
-          <ExpansionFormTextfield  
-            label='# Special Cards' 
-            name='special' 
-            value={formData.special}
-            onHandleInputChange={handleInputChange}
-          />
-          <ExpansionFormTextfield 
-            label='# Special (Foil)' 
-            name='special_foil' 
-            value={formData.special_foil}
-            onHandleInputChange={handleInputChange}
-          />
-          <ExpansionFormTextfield 
-            label='# Full Art (Non-Foil)' 
-            name='full_art' 
-            value={formData.full_art}
-            onHandleInputChange={handleInputChange}
-          />
-          <ExpansionFormTextfield  
-            label='# Full Art (Foil)' 
-            name='full_art_foil' 
-            value={formData.full_art_foil}
-            onHandleInputChange={handleInputChange}
-          />
         </Stack>
 
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
