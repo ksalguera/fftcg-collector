@@ -1,7 +1,7 @@
 import { createContext, useMemo } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme } from '@mui/material/styles';
-import { indigo, green, grey } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 export const themeSettings = mode => {
   return {

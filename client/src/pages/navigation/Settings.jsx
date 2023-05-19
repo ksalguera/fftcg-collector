@@ -33,7 +33,6 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
       </Tooltip>
       <Menu
         sx={{ mt: '45px' }}
-        // id="menu-appbar"
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
@@ -79,7 +78,6 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
           <Typography 
             textAlign='center' 
             component={RouterLink} 
-            // to='/'
             ml={2}
             sx={{ 
               textDecoration: 'none',
