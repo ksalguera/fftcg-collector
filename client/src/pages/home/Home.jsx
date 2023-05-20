@@ -4,12 +4,15 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import image from '../../assets/CoverImage.png'
+import { useMode } from '../../contexts/ThemeContext';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [theme] = useMode();
+  console.log(theme.palette.mode)
 
   return (
-    <Box sx={{ bgcolor: 'primary.main', height: '100vh'}}>
+    <Box sx={{ bgcolor: theme.palette.mode === 'light' ? 'primary.main' : 'neutral.dark', height: '100vh'}}>
       <Box className='container'>
         <Stack direction='row' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 'inherit' }}>
           <Box sx={{ width: '40%' }}>

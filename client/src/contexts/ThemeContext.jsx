@@ -19,16 +19,22 @@ export const themeSettings = mode => {
             main: grey[500],
             light: grey[100]
           },
-          background: { default: '#fcfcfc' }
+          background: { 
+            default: '#fcfcfc',
+            paper: grey[100]
+           }
         } : {
           primary: { main: grey[100] },
           secondary: { main: '#eeff41' },
           neutral: {
-            dark: grey[800],
+            dark: grey[900],
             main: grey[500],
             light: grey[100]
           },
-          background: { default: grey[900] }
+          background: { 
+            default: grey[900], 
+            paper: grey[800] 
+          }
         }
       )
     },

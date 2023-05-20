@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Divider, IconButton, Link, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/LibraryAdd';
 import { AppContext } from '../contexts/AppContext';
+import { useMode } from '../contexts/ThemeContext';
 import CollectionDialogForm from '../pages/collection/CollectionDialogForm';
 
 const Card = ({ id, name, serial, image, variants }) => {
@@ -21,6 +22,7 @@ const Card = ({ id, name, serial, image, variants }) => {
   const FAF = hasFullArtFoilVariant ? 'FAF' : null;
   const [collection, setCollection] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+  const [theme] = useMode();
   
   // set collection state based on user profile
   useEffect(() => {
@@ -67,7 +69,7 @@ const Card = ({ id, name, serial, image, variants }) => {
   return (
     <Box>
       <Stack direction='row' justifyContent='space-between' mb={1}>
-        <Link component={RouterLink} to={`/browse-cards/${serial}`} color='secondary.dark'>{name}</Link>
+        <Link component={RouterLink} to={`/browse-cards/${serial}`} color={theme.palette.mode === 'light' ? 'secondary.dark' : 'secondary.main'}>{name}</Link>
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
       <img src={image} style={{ maxWidth: '100%', height: 'auto' }} />
