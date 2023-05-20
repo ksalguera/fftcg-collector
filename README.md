@@ -22,7 +22,9 @@ Admin User Stories
 * Admin user can update a card and card variants
 
 ## Project Preview
-Coming Soon
+
+### Home Page
+![Home](https://imgur.com/iBKoUVz.png)
 
 ## Database Overview
 Database is setup to use the following seed data:
