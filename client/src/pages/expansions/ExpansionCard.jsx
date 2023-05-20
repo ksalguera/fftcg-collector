@@ -11,7 +11,7 @@ const ExpansionCard = ({ name, releaseDate, image, stats }) => {
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography variant='h3'>{name}</Typography>
-          <Typography sx={{ fontSize: 14 }} mb={4} color='text.secondary'>Released: {releaseDate}</Typography>
+          <Typography sx={{ fontSize: 14 }} mb={4} color='text.secondary'>Released: {new Date(releaseDate).toLocaleDateString()}</Typography>
           <Box mb={2} sx={{ display: 'flex', alignItems: 'center' }}>
             <Box sx={{ width: '80%', mr: 1 }}>
               <LinearProgress variant='determinate' value={stats} sx={{ height: 8, borderRadius: 5 }} />
