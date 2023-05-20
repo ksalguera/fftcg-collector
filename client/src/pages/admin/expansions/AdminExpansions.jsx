@@ -48,9 +48,11 @@ const AdminExpansions = () => {
       { checked && <ExpansionForm />}
       <Box mb={2} style={{ width: '100%' }}>
         <DataGrid
-          autoHeight
-          pageSize={10}
-          pageSizeOptions={[10, 25, 100]}
+          initialState={{
+            pagination: {
+              paginationModel: { pageSize: 12, page: 0 },
+            }
+          }}
           rows={expansions} 
           columns={columns}
           onRowSelectionModelChange={(newSelectionModel) => {

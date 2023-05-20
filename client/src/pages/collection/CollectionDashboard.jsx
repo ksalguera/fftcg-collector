@@ -38,7 +38,11 @@ const CollectionDashboard = () => {
         <Box mb={2} sx={{ width: '100%', height: '80%' }}>
           <DataGrid
             slots={{ toolbar: GridToolbar }}
-            autoPageSize
+            initialState={{
+              pagination: {
+                paginationModel: { pageSize: 12, page: 0 },
+              }
+            }}
             rows={user.profile.collections} 
             columns={columns}
             onRowSelectionModelChange={(newSelectionModel) => {

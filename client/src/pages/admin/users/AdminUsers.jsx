@@ -31,9 +31,11 @@ const AdminUsers = () => {
       <PageTitle title='Manage Users' />
       <Box mb={2} sx={{ width: '100%' }}>
         <DataGrid
-          autoHeight
-          pageSize={10}
-          pageSizeOptions={[10, 25, 100]}
+          initialState={{
+            pagination: {
+              paginationModel: { pageSize: 12, page: 0 },
+            }
+          }}
           rows={users} 
           columns={columns}
           onRowSelectionModelChange={(newSelectionModel) => {
