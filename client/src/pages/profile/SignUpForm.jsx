@@ -109,7 +109,7 @@ const SignUpForm = () => {
         <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
         </Button>
-        <Typography mt={2}>Already have an account? <Link href='/login'>LOGIN</Link></Typography> 
+        <Typography mt={2}>Already have an account? <Link to='/login'>LOGIN</Link></Typography> 
       </Box>
     </Box>
   );
