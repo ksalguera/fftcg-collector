@@ -32,7 +32,34 @@ Database is setup to use the following seed data:
 Coming Soon
 
 ## Routes
-Coming Soon
+
+### Cards - CRUD: Create, Read, Update, Delete
+**INDEX** /cards \
+**SHOW** /cards/:serial \
+**CREATE** /cards (Admin Only) \
+**UPDATE** /cards/:serial (Admin Only) \
+**DESTROY** /cards/:id (Admin Only)
+### Expansions - CRUD: Create, Read, Delete
+**INDEX** /expansions \
+**SHOW** /expansions/:name \
+**CREATE** /expansions (Admin Only) \
+**DESTROY** /expansions/:id (Admin Only)
+### Users - CRUD: Create, Update, Delete
+**CREATE** /users \
+**UPDATE** /users/:id \
+**DESTROY** /users/:id
+### Users - Custom Routes
+**GET** /all-users (Admin Only) \
+**SHOW** /account \
+**PATCH** /change-password \
+**DELETE** /admin/users/:id (Admin Only)
+### Collections - Custom Routes
+**INDEX** /collections \
+**GET** /collection-stats \
+**POST** /update-collection
+### Sessions - Custom Routes
+**POST** /login \
+**DELETE** /logout
 
 ## Attributions
 
