@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get '/all-users', to: 'admins#all_users'
   delete '/admin/users/:id', to: 'admins#destroy_user'
 
-  # get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
+  get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
