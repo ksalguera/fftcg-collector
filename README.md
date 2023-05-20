@@ -26,6 +26,30 @@ Admin User Stories
 ### Home Page
 ![Home](https://imgur.com/iBKoUVz.png)
 
+### Sets Page
+![Sets](https://imgur.com/SJF1u9K.png)
+
+### Cards By Set Page
+![Set Cards](https://imgur.com/0zajdCy.png)
+
+### Card Browser Page
+![Card Browser](https://imgur.com/KPpfRbM.png)
+
+### Resourcese Page
+![Resources](https://imgur.com/QMrMnk9.png)
+
+### (User) Collection Dashboard
+![Dashboard](https://imgur.com/oEs3PjG.png)
+
+### (Admin) Admin Dashboard
+![Admin Dashboard](https://imgur.com/Dm9EVZM.png)
+
+### (Admin) Manage Sets
+![Manage Sets](https://imgur.com/4jDqKrQ.png)
+
+### (Admin) Edit Card Page
+![Card Edit](https://imgur.com/YzqJYDT.png)
+
 ## Database Overview
 Database is setup to use the following seed data:
 * 6  Default Cart Variant Types
