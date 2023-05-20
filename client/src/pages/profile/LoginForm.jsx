@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink as RouterLink } from 'react-router-dom';
 import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
 import { AppContext } from '../../contexts/AppContext';
 
@@ -69,7 +69,7 @@ const LoginForm = () => {
         <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
         </Button>
-        <Typography mt={2}>Need an account? <Link to='/signup'>SIGN UP</Link></Typography> 
+        <Typography mt={2}>Need an account? <Link component={RouterLink} to='/signup'>SIGN UP</Link></Typography> 
       </Box>
     </Box>
   );
