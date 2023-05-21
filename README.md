@@ -35,7 +35,7 @@ Admin User Stories
 ### Card Browser Page
 ![Card Browser](https://imgur.com/KPpfRbM.png)
 
-### Resourcese Page
+### Resources Page
 ![Resources](https://imgur.com/QMrMnk9.png)
 
 ### (User) Collection Dashboard
