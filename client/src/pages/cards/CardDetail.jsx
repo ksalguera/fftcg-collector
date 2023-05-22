@@ -6,9 +6,9 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import ReturnIcon from '@mui/icons-material/ArrowBack';
-import NotFound from '../resources/NotFound';
 import PageTitle from '../../components/PageTitle';
 import SectionTitle from './SectionTitle';
+import CircularProgressTimeout from '../../components/CircularProgressTimeout';
 
 const CardDetail = () => {
   let { serial } = useParams();
@@ -68,7 +68,7 @@ const CardDetail = () => {
           </Box>
         </Box>
       ) : (
-        <NotFound />
+        <CircularProgressTimeout />
       )
       }
     </>
