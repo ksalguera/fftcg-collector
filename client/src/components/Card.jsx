@@ -93,7 +93,7 @@ const Card = ({ id, name, serial, image, variants }) => {
       />
       <SnackbarCustom
         type='success' 
-        message='Card Saved to Collection' 
+        message='Collection Updated Successfully' 
         open={open}
         onHandleClose={reason => reason !== 'clickaway' && setOpen(false)}
       />
