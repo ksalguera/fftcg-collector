@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import { AppContext } from '../contexts/AppContext';
 
@@ -23,7 +24,7 @@ const PrivateRoutes = () => {
   return (
     <>
       { 
-        userLoading ? <CircularProgress /> :
+        userLoading ? <Box className='container'><CircularProgress /></Box> :
         user ? <Outlet /> : <Navigate to='/login'/>
       }
     </>

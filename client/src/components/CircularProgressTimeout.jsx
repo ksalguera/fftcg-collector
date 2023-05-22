@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import NotFound from '../pages/resources/NotFound';
+import PageTitle from './PageTitle';
 
 const CircularProgressTimeout = () => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ const CircularProgressTimeout = () => {
 
   return (
     <Box className='container'>
-      {loading ? <CircularProgress /> : <NotFound />}
+      {loading ? <CircularProgress /> : <PageTitle title='404 - Not Found' />}
     </Box>
   )
 }
