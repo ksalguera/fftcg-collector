@@ -33,9 +33,10 @@ const AdminUsers = () => {
         <DataGrid
           initialState={{
             pagination: {
-              paginationModel: { pageSize: 12, page: 0 },
+              paginationModel: { pageSize: 10, page: 0 },
             }
           }}
+          pageSizeOptions={[5, 10, 25]}
           rows={users} 
           columns={columns}
           onRowSelectionModelChange={(newSelectionModel) => {

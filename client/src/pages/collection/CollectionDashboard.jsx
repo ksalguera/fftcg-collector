@@ -40,9 +40,10 @@ const CollectionDashboard = () => {
             slots={{ toolbar: GridToolbar }}
             initialState={{
               pagination: {
-                paginationModel: { pageSize: 12, page: 0 },
+                paginationModel: { pageSize: 10, page: 0 },
               }
             }}
+            pageSizeOptions={[5, 10, 25]}
             rows={user.profile.collections} 
             columns={columns}
             onRowSelectionModelChange={(newSelectionModel) => {
