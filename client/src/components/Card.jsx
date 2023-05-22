@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/LibraryAdd';
 import { AppContext } from '../contexts/AppContext';
 import { useMode } from '../contexts/ThemeContext';
 import CollectionDialogForm from '../pages/collection/CollectionDialogForm';
+import SnackbarCustom from './SnackbarCustom';
 
 const Card = ({ id, name, serial, image, variants }) => {
   const { user, setUser } = useContext(AppContext);
@@ -21,6 +22,7 @@ const Card = ({ id, name, serial, image, variants }) => {
   const FA = hasFullArtVariant ? 'FA' : null;
   const FAF = hasFullArtFoilVariant ? 'FAF' : null;
   const [collection, setCollection] = useState([]);
+  const [open, setOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [theme] = useMode();
   
@@ -60,6 +62,8 @@ const Card = ({ id, name, serial, image, variants }) => {
       } else {
         const data = await res.json();
         setUser(data)
+        setOpenDialog(false)
+        setOpen(true)
       }
     } catch (error) {
       console.error(error);
@@ -86,6 +90,12 @@ const Card = ({ id, name, serial, image, variants }) => {
         cardId={id}
         variants={variants}
         collection={collection}
+      />
+      <SnackbarCustom
+        type='success' 
+        message='Card Saved to Collection' 
+        open={open}
+        onHandleClose={reason => reason !== 'clickaway' && setOpen(false)}
       />
     </Box>
   )
