@@ -3,10 +3,12 @@ import { Alert, Box, Button, CircularProgress, FormControl, TextField, Typograph
 import { AppContext } from '../../contexts/AppContext';
 import PasswordForm from './PasswordForm';
 import DeleteAccount from './DeleteAccount';
+import SnackbarCustom from '../../components/SnackbarCustom';
 
 const AccountSettings = () => {
   const { user, setUser } = useContext(AppContext);
   const [errors, setErrors] = useState(null);
+  const [open, setOpen] = useState(false);
   const initialState = {
     email: '',
     profile_attributes: {
@@ -50,6 +52,7 @@ const AccountSettings = () => {
         const data = await res.json();
         setUser(data)
         setErrors(null)
+        setOpen(true)
       }
     } catch (error) {
       console.error(error);
@@ -93,6 +96,12 @@ const AccountSettings = () => {
         </Box>
         <PasswordForm />
         <DeleteAccount />
+        <SnackbarCustom
+          type='success' 
+          message='Account Information Updated Successfully' 
+          open={open}
+          onHandleClose={reason => reason !== 'clickaway' && setOpen(false)}
+        />
       </Box>
       }
     </>
