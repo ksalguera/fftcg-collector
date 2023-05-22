@@ -4,7 +4,7 @@ import { Box, CircularProgress, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import PageTitle from '../../components/PageTitle';
 import Card from '../../components/Card';
-import NotFound from '../resources/NotFound';
+import CircularProgressTimeout from '../../components/CircularProgressTimeout';
 
 const ExpansionDetail = () => {
   const [expansion, setExpansion] = useState({});
@@ -26,7 +26,13 @@ const ExpansionDetail = () => {
         <Box sx={{ flexDirection: 'column' }} className='container'> 
           <Stack direction='row' spacing={2} alignItems='baseline'>
             <PageTitle title={expansion.name} />
-            <Typography variant='body1'>Released: {new Date(expansion.release_date).toLocaleDateString()}</Typography>
+            <Typography 
+              variant='body1'>
+                { expansion.release_date ? 
+                  `Released: ${new Date(expansion.release_date).toLocaleDateString()}` : 
+                  <CircularProgress />
+                }
+            </Typography>
           </Stack>
           <Box mb={2} sx={{ height: 8, backgroundColor: 'neutral.main' }} />
           <Grid container spacing={2}> 
@@ -46,7 +52,7 @@ const ExpansionDetail = () => {
           </Grid>
         </Box>
       ) : (
-        <NotFound />
+        <CircularProgressTimeout />
       )}
     </>
   )
