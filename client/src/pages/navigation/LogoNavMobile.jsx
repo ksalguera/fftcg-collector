@@ -8,12 +8,11 @@ const LogoNavMobile = () => {
   return (
     <>
       <Typography
-        variant='caption'
+        variant='body1'
         noWrap
         component={RouterLink}
         to={!user ? '/' : '/collection-dashboard'}
         sx={{
-          mr: 2,
           display: { xs: 'flex', md: 'none' },
           flexGrow: 1,
           fontFamily: 'sans-serif',
