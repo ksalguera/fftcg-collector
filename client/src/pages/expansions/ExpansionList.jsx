@@ -15,7 +15,7 @@ const ExpansionList = () => {
       <Grid container spacing={2}> 
         { !expansions ? <CircularProgress /> :
           expansions.map(expansion => (
-            <Grid key={expansion.name} sm={6}> 
+            <Grid key={expansion.name} xs={12} sm={6}> 
               <ExpansionCard
                 name={expansion.name}
                 releaseDate={expansion.release_date}
