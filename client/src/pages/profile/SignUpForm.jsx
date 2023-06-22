@@ -103,13 +103,13 @@ const SignUpForm = () => {
           </Typography>
         </FormControl>
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
-        <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
+        <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '30%' }}>
           Sign Up
         </Button>
         <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
         </Button>
-        <Typography mt={2}>Already have an account? <Link component={RouterLink} to='/login'>LOGIN</Link></Typography> 
+        <Typography mt={2}>Already have an account? <Link component={RouterLink} to='/login'>Login</Link></Typography> 
       </Box>
     </Box>
   );
