@@ -8,7 +8,7 @@ const LogoNavMobile = () => {
   return (
     <>
       <Typography
-        variant='h5'
+        variant='caption'
         noWrap
         component={RouterLink}
         to={!user ? '/' : '/collection-dashboard'}
@@ -17,7 +17,7 @@ const LogoNavMobile = () => {
           display: { xs: 'flex', md: 'none' },
           flexGrow: 1,
           fontFamily: 'sans-serif',
-          fontWeight: 700,
+          fontWeight: 400,
           letterSpacing: '.3rem',
           color: 'inherit',
           textDecoration: 'none',
