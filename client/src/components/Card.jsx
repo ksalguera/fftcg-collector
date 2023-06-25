@@ -76,7 +76,7 @@ const Card = ({ id, name, serial, image, variants }) => {
         <Link component={RouterLink} to={`/browse-cards/${serial}`} color={theme.palette.mode === 'light' ? 'secondary.dark' : 'secondary.main'}>{name}</Link>
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
-      <img src={image} style={{ maxWidth: '100%', height: 'auto' }} />
+      <img src={image} style={{ maxWidth: '100%', height: 'auto', borderRadius: '10px' }} />
       <Stack direction='row' justifyContent='space-between' alignItems='center'>
         <Typography variant='body1'>{N} {NF} {S} {SF} {FA} {FAF}</Typography>
         {user && <IconButton onClick={() => setOpenDialog(true)}><AddIcon fontSize='small'/></IconButton>}
