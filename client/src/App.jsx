@@ -22,6 +22,7 @@ import AdminRoute from './components/AdminRoute';
 import NotFound from './pages/resources/NotFound';
 import Resources from './pages/resources/Resources';
 import CardDetail from './pages/cards/CardDetail';
+import ForgotPassword from './pages/profile/ForgotPassword';
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -41,6 +42,7 @@ const App = () => {
               <Route path='/resources' element={<Resources />} />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignUpForm />} />
+              <Route path='/forgot-password' element={<ForgotPassword />} />
               <Route element={<PrivateRoutes />}>
                 <Route element={<AdminRoute />}>
                   <Route path='/admin-dashboard' element={<AdminDashboard />} />

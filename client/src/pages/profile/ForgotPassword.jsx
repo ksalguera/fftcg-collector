@@ -1,12 +1,9 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, NavLink as RouterLink } from 'react-router-dom';
 import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
-import { AppContext } from '../../contexts/AppContext';
 
-const LoginForm = () => {
-  const initialState = { email: '', password: '' };
-  const { setUser } = useContext(AppContext);
-  const [formData, setFormData] = useState(initialState);
+const ForgotPassword = () => {
+  const [formData, setFormData] = useState({ email: '' });
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
 
@@ -26,10 +23,8 @@ const LoginForm = () => {
         setErrors(errorData.errors)
       } else {
         const data = await res.json();
-        setUser(data)
         setErrors([])
-        setFormData(initialState);
-        data.is_admin ? navigate('/admin-dashboard') : navigate('/collection-dashboard')
+        setFormData({ email: '' });
       }
     } catch (error) {
       console.error(error);
@@ -37,9 +32,9 @@ const LoginForm = () => {
   }
 
   return (
-    <Box sx={{ flexDirection: 'column' }} className='container'>
+    <Box sx={{ width: '100%', flexDirection: 'column' }} className='container'>
       <Box component='form' sx={{ maxWidth: 400 }} onSubmit={handleSubmit}>
-        <Typography variant='h2' mb={2}>Login to Your Account</Typography>
+        <Typography variant='h2' mb={2}>Forgot Password</Typography>
         <FormControl fullWidth sx={{ mb: 2 }}>
           <Typography variant='subtitle1' mb={1}>Email Address</Typography>
           <TextField
@@ -51,32 +46,16 @@ const LoginForm = () => {
             onChange={handleInputChange}
           />
         </FormControl>
-        <FormControl fullWidth sx={{ mb: 2 }}>
-          <Typography variant='subtitle1' mb={1}>Password</Typography>
-          <TextField
-            required
-            id='password'
-            type='password'
-            name='password'
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-        </FormControl>
         { errors && (<Alert severity='error'>{errors}</Alert>) }
         <Button type='submit' variant='contained' color='primary' sx={{ mt: 2, width: '25%' }}>
-          Login
+          Reset
         </Button>
-        <Button variant='outlined' color='primary' onClick={() => navigate('/')} sx={{ ml: 1, mt: 2, width: '25%' }}>
+        <Button variant='outlined' color='primary' onClick={() => navigate('/login')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
-        </Button>
-        <Typography mt={2}>
-          <Link component={RouterLink} to='/signup'>Sign Up</Link>
-           {' or '} 
-          <Link component={RouterLink} to='/forgot-password'>Forgot Password</Link>
-        </Typography>  
+        </Button> 
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default ForgotPassword;
