@@ -59,7 +59,6 @@ const Card = ({ id, name, serial, image, variants }) => {
       });
       if (!res.ok) {
         const errorData = await res.json();
-        console.log(errorData);
       } else {
         const data = await res.json();
         setUser(data)

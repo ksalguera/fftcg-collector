@@ -29,7 +29,6 @@ const CardForm = () => {
     const variantId= parseInt(e.target.value, 10);
     if (variants?.includes(variantId)) {
       const updatedVariants = variants.filter(id => id !== variantId)
-      console.log(updatedVariants)
       setVariants(updatedVariants)
     } else {
       setVariants([...variants, variantId])

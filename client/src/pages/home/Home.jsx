@@ -9,7 +9,6 @@ import { useMode } from '../../contexts/ThemeContext';
 const Home = () => {
   const navigate = useNavigate();
   const [theme] = useMode();
-  console.log(theme.palette.mode)
 
   return (
     <Box sx={{ bgcolor: theme.palette.mode === 'light' ? 'primary.main' : 'neutral.dark', height: '100vh'}}>

@@ -54,7 +54,6 @@ const CardEditForm = () => {
     const variantName = e.target.name
     if (variants?.includes(variantName)) {
       const updatedVariants = variants.filter(variant => variant !== variantName)
-      console.log(updatedVariants)
       setVariants(updatedVariants)
     } else {
       setVariants([...variants, variantName])
