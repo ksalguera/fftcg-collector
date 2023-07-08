@@ -38,7 +38,7 @@ const ExpansionDetail = () => {
           <Grid container spacing={2}> 
             { !expansion ? <CircularProgress /> :
               expansion.cards?.map(card => (
-                <Grid key={card.name} sm={2}> 
+                <Grid key={card.id} sm={2}> 
                   <Card
                     id={card.id}
                     name={card.name}
