@@ -42,7 +42,7 @@ const CardDetail = () => {
           </Stack>
             <Grid container spacing={2}>
               <Grid md={4} lg={4}>
-                <img src={card.image_url} alt='card' style={{ maxWidth: '100%', height: 'auto', borderRadius: '10px' }} />
+                <img src={card.image_url} alt='card' style={{ maxWidth: '100%', height: 'auto', borderRadius: '15px' }} />
               </Grid>
               <Grid md={8} lg={8}>
                 <Typography variant='body1'>
