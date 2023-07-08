@@ -51,7 +51,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.permit(:name, :expansion_id, :card_type, :serial, :card_job, :cost, :power, :image)
+    params.permit(:name, :expansion_id, :card_type, :serial, :card_job, :cost, :power, :image, variant_ids: [])
   end
 
   def card_params_update

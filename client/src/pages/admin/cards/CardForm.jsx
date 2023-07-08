@@ -3,6 +3,7 @@ import { Alert, Box, Button, FormControl, Divider, InputLabel, MenuItem, Select,
 import CardFormTextfield from './CardFormTextfield';
 import { AppContext } from '../../../contexts/AppContext';
 import ImageUpload from '../../../components/ImageUpload';
+import CardFormVariants from './CardFormVariants';
 
 const CardForm = () => {
   const initialState = {
@@ -13,14 +14,34 @@ const CardForm = () => {
     card_job: '',
     cost: '',
     power: '',
+    variant_ids: []
    }
 
   const { cards, setCards, expansions } = useContext(AppContext);
   const [formData, setFormData] = useState(initialState);
+  const [variants, setVariants] = useState([]);
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState(null);
 
   const handleInputChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+  const handleEditVariant = e => {
+    const variantId= parseInt(e.target.value, 10);
+    if (variants?.includes(variantId)) {
+      const updatedVariants = variants.filter(id => id !== variantId)
+      console.log(updatedVariants)
+      setVariants(updatedVariants)
+    } else {
+      setVariants([...variants, variantId])
+    }
+
+    if (formData.variant_ids?.includes(variantId)) {
+      const updatedIds = formData.variant_ids.filter(id => id !== variantId)
+      setFormData({...formData, variant_ids: updatedIds})
+    } else {
+      setFormData({...formData, variant_ids: [...formData.variant_ids, variantId]})
+    }
+  }
 
   const handleSetImage = e => setImage(e.target.files[0]);
 
@@ -35,6 +56,9 @@ const CardForm = () => {
     form.append("[card_job]", formData.card_job);
     form.append("[cost]", formData.cost);
     form.append("[power]", formData.power);
+    formData.variant_ids.forEach((variantId) => {
+      form.append("variant_ids[]", variantId);
+    });
     form.append("[image]", image);
 
     try {
@@ -50,6 +74,7 @@ const CardForm = () => {
         setErrors(null)
         setCards([...cards, data])
         setFormData(initialState)
+        setVariants([])
         setImage(null)
       }
     } catch (error) {
@@ -59,6 +84,7 @@ const CardForm = () => {
 
   const handleClear = () => {
     setFormData(initialState)
+    setVariants([])
     setImage(null)
   }
   
@@ -123,19 +149,20 @@ const CardForm = () => {
             onHandleInputChange={handleInputChange}
           />
           <CardFormTextfield 
-            width='15%'
+            width='10%'
             label='Cost' 
             name='cost' 
             value={formData.cost}
             onHandleInputChange={handleInputChange}
           />
           <CardFormTextfield
-            width='20%'
+            width='15%'
             label='Power' 
             name='power' 
             value={formData.power}
             onHandleInputChange={handleInputChange}
           />
+          <CardFormVariants onEditVariant={handleEditVariant} />
         </Stack>
 
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
