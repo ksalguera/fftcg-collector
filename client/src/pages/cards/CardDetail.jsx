@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -13,6 +13,7 @@ import CircularProgressTimeout from '../../components/CircularProgressTimeout';
 const CardDetail = () => {
   let { serial } = useParams();
   const [card, setCard] = useState(null);
+  const location = useLocation();
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -38,7 +39,13 @@ const CardDetail = () => {
               <PageTitle title={card.name} />
               <Typography variant='body1'>{card.serial}</Typography>
             </Stack>
-            <Button variant='text' startIcon={<ReturnIcon />} onClick={() => navigate('/browse-cards')}>Return to Card Browser</Button>
+            <Button 
+              variant='text' 
+              startIcon={<ReturnIcon />} 
+              onClick={() => navigate(location.pathname.includes('sets') ? `/sets/${card.expansion.name}` : '/browse-cards')}
+            >
+              {location.pathname.includes('sets') ? `Return to ${card.expansion.name}` : 'Return to Card Browser'}
+            </Button>
           </Stack>
             <Grid container spacing={2}>
               <Grid md={4} lg={4}>

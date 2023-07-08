@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Box, Divider, IconButton, Link, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/LibraryAdd';
 import { AppContext } from '../contexts/AppContext';
@@ -25,6 +25,7 @@ const Card = ({ id, name, serial, image, variants }) => {
   const [open, setOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [theme] = useMode();
+  const location = useLocation();
   
   // set collection state based on user profile
   useEffect(() => {
@@ -45,7 +46,7 @@ const Card = ({ id, name, serial, image, variants }) => {
       setCollection([...collection, variantName])
     }
   }
-  
+
   // POST for user to add or remove a card variant to their collection
   const handleSaveCollection = async (event) => {
     event.preventDefault();
@@ -73,7 +74,12 @@ const Card = ({ id, name, serial, image, variants }) => {
   return (
     <Box>
       <Stack direction='row' justifyContent='space-between' mb={1}>
-        <Link component={RouterLink} to={`/browse-cards/${serial}`} color={theme.palette.mode === 'light' ? 'secondary.dark' : 'secondary.main'}>{name}</Link>
+        <Link 
+          component={RouterLink} 
+          to={location.pathname.includes('sets') ? `${location.pathname}/${serial.toLowerCase()}` : `/browse-cards/${serial.toLowerCase()}` } 
+          color={theme.palette.mode === 'light' ? 'secondary.dark' : 'secondary.main'}>
+            {name}
+        </Link>
         <Typography variant='h5'>{serial}</Typography>
       </Stack>
       <img src={image} style={{ maxWidth: '100%', height: 'auto', borderRadius: '10px' }} />

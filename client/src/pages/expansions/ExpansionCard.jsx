@@ -27,7 +27,7 @@ const ExpansionCard = ({ name, releaseDate, image, stats }) => {
               <Typography variant='body2' color='text.secondary'>{stats} %</Typography>
             </Box>
           </Box> }
-          <Button size='small' variant='outlined' onClick={() => navigate(`/browse-sets/${name}`)} endIcon={<SearchIcon />}>View Details</Button>
+          <Button size='small' variant='outlined' onClick={() => navigate(`/sets/${name.toLowerCase()}`)} endIcon={<SearchIcon />}>View Details</Button>
         </CardContent>
         <CardMedia sx={{ width: '50%' }} image={image} />
       </Box>

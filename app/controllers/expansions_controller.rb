@@ -10,7 +10,8 @@ class ExpansionsController < ApplicationController
   
   # GET /expansions/:name
   def show 
-    expansion = Expansion.find_by(name: params[:id])
+    name = params[:name]
+    expansion = Expansion.where("name ILIKE ?", name).first
     render json: expansion, include: ['cards', 'cards.variants']
   end
 

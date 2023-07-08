@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :cards
-  resources :expansions, except: [:update]
+  resources :cards, only: [:index, :create, :update, :destroy]
+  get '/cards/:serial', to: 'cards#show'
+  resources :expansions, only: [:index, :create, :destroy]
+  get '/expansions/:name', to: 'expansions#show'
   resources :profiles, only: [:update]
   resources :users, only: [:show, :create, :update, :destroy]
   

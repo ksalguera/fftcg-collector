@@ -10,7 +10,8 @@ class CardsController < ApplicationController
   
   # GET /cards/:serial
   def show 
-    card = Card.find_by(serial: params[:id])
+    serial = params[:serial]
+    card = Card.where("serial ILIKE ?", serial).first
     if card.nil?
       render json: { errors: 'Card Not Found'}, status: :not_found
     else

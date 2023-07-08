@@ -45,7 +45,7 @@ const CardList = () => {
       <Grid container spacing={2}> 
         { results.length === 0 ? <Typography variant='body1' mt={2} ml={1}>Please Enter a Keyword</Typography> :
           results?.map(card => (
-            <Grid key={card.name} sm={2}> 
+            <Grid key={card.id} sm={2}> 
               <Card
                 id={card.id}
                 name={card.name}

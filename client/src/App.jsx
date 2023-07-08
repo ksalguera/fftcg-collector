@@ -36,7 +36,8 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/browse-sets' element={<ExpansionList />} />
-              <Route path='/browse-sets/:name' element={<ExpansionDetail />} />
+              <Route path='/sets/:name' element={<ExpansionDetail />} />
+              <Route path='/sets/:name/:serial' element={<CardDetail />} />
               <Route path='/browse-cards' element={<CardList />} />
               <Route path='/browse-cards/:serial' element={<CardDetail />} />
               <Route path='/resources' element={<Resources />} />
