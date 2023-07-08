@@ -90,7 +90,7 @@ const ExpansionForm = () => {
         <Button type='submit' disabled={!image} variant='contained' color='primary' sx={{ width: '10%', mt: 2 }}>
           Add Set
         </Button>
-        <Button variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>
+        <Button variant='text' color='primary' sx={{ width: '10%', mt: 2, ml: 2 }} onClick={handleClear}>
           Clear
         </Button>
       </Box>

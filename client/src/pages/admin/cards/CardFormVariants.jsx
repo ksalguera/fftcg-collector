@@ -1,7 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-const CardFormVariants = ({ onEditVariant }) => {
+const CardFormVariants = ({ variants, onEditVariant }) => {
   return (
     <>
       <FormControlLabel
@@ -9,6 +9,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='N'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(1)}
         onChange={onEditVariant}
       />
       <FormControlLabel
@@ -16,6 +17,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='NF'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(2)}
         onChange={onEditVariant}
       />
       <FormControlLabel
@@ -23,6 +25,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='S'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(3)}
         onChange={onEditVariant}
       />
       <FormControlLabel
@@ -30,6 +33,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='SF'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(4)}
         onChange={onEditVariant}
       />
       <FormControlLabel
@@ -37,6 +41,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='FA'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(5)}
         onChange={onEditVariant}
       />
       <FormControlLabel
@@ -44,6 +49,7 @@ const CardFormVariants = ({ onEditVariant }) => {
         control={<Checkbox />}
         label='FAF'
         labelPlacement='start'
+        checked={variants?.length > 0 && variants.includes(6)}
         onChange={onEditVariant}
       />
     </>

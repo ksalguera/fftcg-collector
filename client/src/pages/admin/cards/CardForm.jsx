@@ -162,7 +162,7 @@ const CardForm = () => {
             value={formData.power}
             onHandleInputChange={handleInputChange}
           />
-          <CardFormVariants onEditVariant={handleEditVariant} />
+          <CardFormVariants variants={variants} onEditVariant={handleEditVariant} />
         </Stack>
 
         { errors && errors.map(error => (<Alert severity='error' key={error}>{error}</Alert>)) }
@@ -170,7 +170,7 @@ const CardForm = () => {
         <Button type='submit' disabled={!image} variant='contained' color='primary' sx={{ width: '15%', mt: 2 }}>
           Add Card
         </Button>
-        <Button variant='text' color='primary' sx={{ width: '10%', ml: 2 }} onClick={handleClear}>
+        <Button variant='text' color='primary' sx={{ width: '10%', mt: 2, ml: 2 }} onClick={handleClear}>
           Clear
         </Button>
       </Box>
