@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { Box, CircularProgress, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import PageTitle from '../../components/PageTitle';
 import Card from '../../components/Card';
@@ -8,6 +8,7 @@ import CircularProgressTimeout from '../../components/CircularProgressTimeout';
 
 const ExpansionDetail = () => {
   const [expansion, setExpansion] = useState({});
+  const [visible, setVisible] = useState(24);
   let { name } = useParams();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const ExpansionDetail = () => {
           <Box mb={2} sx={{ height: 8, backgroundColor: 'neutral.main' }} />
           <Grid container spacing={2}> 
             { !expansion ? <CircularProgress /> :
-              expansion.cards?.map(card => (
+              expansion.cards?.slice(0, visible).map(card => (
                 <Grid key={card.id} sm={2}> 
                   <Card
                     id={card.id}
@@ -50,6 +51,11 @@ const ExpansionDetail = () => {
               ))
             }
           </Grid>
+          <Box mt={2} sx={{ display: 'flex', justifyContent: 'center'}}>
+            { visible !== expansion.cards?.length &&
+              <Button variant='contained' onClick={() => setVisible(visible => visible + 24)}>Load More</Button>
+            }
+          </Box>
         </Box>
       ) : (
         <CircularProgressTimeout />
