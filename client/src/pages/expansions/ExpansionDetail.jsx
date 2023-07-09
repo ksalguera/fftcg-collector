@@ -52,7 +52,7 @@ const ExpansionDetail = () => {
             }
           </Grid>
           <Box mt={2} sx={{ display: 'flex', justifyContent: 'center'}}>
-            { visible !== expansion.cards?.length &&
+            { visible < expansion.cards?.length &&
               <Button variant='contained' onClick={() => setVisible(visible => visible + 24)}>Load More</Button>
             }
           </Box>
