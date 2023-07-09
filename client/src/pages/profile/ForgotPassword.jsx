@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
-import { useNavigate, NavLink as RouterLink } from 'react-router-dom';
-import { Alert, Box, Button, FormControl, Link, TextField, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Alert, Box, Button, FormControl, TextField, Typography } from '@mui/material';
 
 const ForgotPassword = () => {
   const [formData, setFormData] = useState({ email: '' });
@@ -12,23 +12,23 @@ const ForgotPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    try {
-      const res = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) {
-        const errorData = await res.json();
-        setErrors(errorData.errors)
-      } else {
-        const data = await res.json();
-        setErrors([])
-        setFormData({ email: '' });
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const res = await fetch('/login', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(formData),
+    //   });
+    //   if (!res.ok) {
+    //     const errorData = await res.json();
+    //     setErrors(errorData.errors)
+    //   } else {
+    //     const data = await res.json();
+    //     setErrors([])
+    //     setFormData({ email: '' });
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 
   return (
@@ -53,6 +53,7 @@ const ForgotPassword = () => {
         <Button variant='outlined' color='primary' onClick={() => navigate('/login')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
         </Button> 
+        <Alert severity='error' sx={{ mt: 2 }}>Forgot Password Coming in August Release</Alert>
       </Box>
     </Box>
   )
