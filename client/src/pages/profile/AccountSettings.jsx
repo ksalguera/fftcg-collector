@@ -11,6 +11,7 @@ const AccountSettings = () => {
   const [open, setOpen] = useState(false);
   const initialState = {
     email: '',
+    password: '',
     profile_attributes: {
       display_name: ''
     }
@@ -21,6 +22,7 @@ const AccountSettings = () => {
     if (user) {
       setFormData({
         email: user.email || '',
+        password: '',
         profile_attributes: {
           display_name: user.profile.display_name || ''
         }
@@ -52,7 +54,8 @@ const AccountSettings = () => {
         const data = await res.json();
         setUser(data)
         setErrors(null)
-        setOpen(true)
+        setOpen(true) 
+        setFormData({...formData, password: ''})
       }
     } catch (error) {
       console.error(error);
@@ -71,7 +74,6 @@ const AccountSettings = () => {
             <Typography variant='subtitle1' mb={1}>Display Name</Typography>
             <TextField
               required
-              id='displayName'
               type='text'
               name='display_name'
               value={formData.profile_attributes.display_name || ''}
@@ -82,10 +84,19 @@ const AccountSettings = () => {
             <Typography variant='subtitle1' mb={1}>Email Address</Typography>
             <TextField
               required
-              id='email'
               type='email'
               name='email'
               value={formData.email || ''}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl fullWidth sx={{ mb: 2 }}>
+            <Typography variant='subtitle1' mb={1}>Current Password</Typography>
+            <TextField
+              required
+              type='password'
+              name='password'
+              value={formData.password}
               onChange={handleInputChange}
             />
           </FormControl>
