@@ -41,7 +41,7 @@ const AdminExpansions = () => {
       <Stack direction='row' justifyContent='space-between'>
         <PageTitle title='Manage Sets' />
         <Stack direction='row' alignItems='baseline'>
-          <Typography variant='body2'>Add Expansion</Typography>
+          <Typography variant='body2'>Add Set</Typography>
           <Switch checked={checked} onChange={e => setChecked(e.target.checked)}/>
         </Stack>
       </Stack>
