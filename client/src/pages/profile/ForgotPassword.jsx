@@ -53,7 +53,7 @@ const ForgotPassword = () => {
         <Button variant='outlined' color='primary' onClick={() => navigate('/login')} sx={{ ml: 1, mt: 2, width: '25%' }}>
           Cancel
         </Button> 
-        <Alert severity='error' sx={{ mt: 2 }}>Forgot Password Coming in August Release</Alert>
+        <Alert severity='error' sx={{ mt: 2 }}>Forgot Password Coming in December Release</Alert>
       </Box>
     </Box>
   )
