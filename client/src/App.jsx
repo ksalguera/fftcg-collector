@@ -13,12 +13,13 @@ import Home from './pages/home/Home';
 import LoginForm from './pages/profile/LoginForm';
 import SignUpForm from './pages/profile/SignUpForm';
 import AccountSettings from './pages/profile/AccountSettings';
+import HomeRoute from './components/HomeRoute';
 import PrivateRoutes from './components/PrivateRoutes';
+import AdminRoute from './components/AdminRoute';
 import ExpansionList from './pages/expansions/ExpansionList';
 import CardEditForm from './pages/admin/cards/CardEditForm';
 import Footer from './pages/resources/Footer';
 import ExpansionDetail from './pages/expansions/ExpansionDetail';
-import AdminRoute from './components/AdminRoute';
 import NotFound from './pages/resources/NotFound';
 import Resources from './pages/resources/Resources';
 import CardDetail from './pages/cards/CardDetail';
@@ -34,7 +35,10 @@ const App = () => {
         <AppContextProvider>
           <NavBar />
             <Routes>
-              <Route path='/' element={<Home />} />
+              {/* <Route path='/' element={<Home />} /> */}
+              <Route element={<HomeRoute />}>
+                <Route path='/' element={<Home />} />
+              </Route>
               <Route path='/browse-sets' element={<ExpansionList />} />
               <Route path='/sets/:name' element={<ExpansionDetail />} />
               <Route path='/sets/:name/:serial' element={<CardDetail />} />

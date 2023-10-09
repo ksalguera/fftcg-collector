@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 
-const AdminRoute = () => {
+const HomeRoute = () => {
   const { user } = useContext(AppContext);
 
-  if (!user.is_admin) {
-    return <Navigate to='/' />
+  if (user) {
+    return <Navigate to='/collection-dashboard' />
   } 
   return <Outlet /> 
 }
 
-export default AdminRoute;
+export default HomeRoute;

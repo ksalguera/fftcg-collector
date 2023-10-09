@@ -67,7 +67,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
             ml={2}
             sx={{ 
               textDecoration: 'none',
-              '&:visited': { color: 'inherit' }
+              color: 'inherit'
             }}
           >
             Account Settings
@@ -81,7 +81,7 @@ const Settings = ({ anchorElUser, onHandleOpenUserMenu, onHandleCloseUserMenu })
             ml={2}
             sx={{ 
               textDecoration: 'none',
-              '&:visited': { color: 'inherit' }
+              color: 'inherit'
             }}
           >
             Logout
