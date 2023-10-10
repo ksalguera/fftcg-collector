@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from 'react';
-import LinearProgress from '@mui/material/LinearProgress';
 import { Navigate, Outlet } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 
@@ -11,17 +10,16 @@ const HomeRoute = () => {
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setLoading(false)
-    }, 1000)
+    }, 500)
 
     return () => clearTimeout(timeOut)
   }, [])
   
   if (loading) {
-    return <LinearProgress />
-  } else if (user) {
-    return <Navigate to='/collection-dashboard' />
+    return <Outlet />
+  } else {
+    return user ? <Navigate to='/collection-dashboard' /> : <Outlet />
   }
-  return <Outlet /> 
 }
 
 export default HomeRoute;
