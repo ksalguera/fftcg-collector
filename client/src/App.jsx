@@ -35,7 +35,6 @@ const App = () => {
         <AppContextProvider>
           <NavBar />
             <Routes>
-              {/* <Route path='/' element={<Home />} /> */}
               <Route element={<HomeRoute />}>
                 <Route path='/' element={<Home />} />
               </Route>
