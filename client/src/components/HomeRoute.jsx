@@ -11,7 +11,7 @@ const HomeRoute = () => {
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setLoading(false)
-    }, 500)
+    }, 1000)
 
     return () => clearTimeout(timeOut)
   }, [])
